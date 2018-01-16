@@ -1,0 +1,536 @@
+\documentclass[12pt]{report}
+
+\usepackage{amssymb,amsthm}
+\usepackage{amsmath,color}
+%\usepackage{dsfont}
+\usepackage{setspace}
+\usepackage{graphicx}
+
+\def\w{\mathtt w}
+\def\K{\mathcal K}
+\def\N{\mathbb N}
+\def\R{\mathcal R}
+\def\l{\ell}
+\def\S{\mathcal S}
+\def\Z{\mathbb Z}
+\def\ora{\overrightarrow}
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{defn}{Definition}[chapter]
+
+\begin{document}
+
+\begin{center}
+\LARGE{\textbf{Some Topics in Ramsey Theory}}\\
+%\large{\textbf{Research Plan}}\\[5pt]
+%by \\
+\vspace{1in}
+
+\Large{\textbf{Srashti Dwivedi}} \\[5pt]
+(2013MAZ8162)\\[10pt]
+Under the Guidance of \\
+\Large{\textbf{Prof. Amitabha Tripathi}}
+\vspace{1in}
+
+\begin{center}
+\includegraphics[height=4.5cm]{iitd.jpeg}
+\end{center}
+\vspace{0.2cm}
+\textbf{Department of Mathematics} \\
+\textbf{Indian Institute of Technology, Delhi}\\
+\textbf{20 January 2015}
+\end{center}
+
+\newpage
+
+\begin{center}
+\Large \bf PROFILE
+\end{center}
+\vspace{0.2in}
+
+\begin{itemize}
+\item
+Name: Srashti Dwivedi
+\item
+Entry No.: 2013MAZ8162
+\item
+Date of joining: 19 July 2013
+\item
+Coursework: Completed
+\item
+Courses Opted:
+\begin{center}
+\begin{tabular}{|c|c|l|c|l|}\hline
+No. & Course Code & Course Title & Credit & Grade \\ \hline
+1. & MAL860 & Linear Algebra & 3 & A- \\ \hline
+2. & MAL705 & Discrete Mathematics & 3  &A \\ \hline
+3. & MAL735 & Number Theory & 4 & B- \\ \hline
+4. & MAL 863 & Algebraic Number Theory & 3 & A- \\ \hline
+5. & HUL 810 & Communication Skills & 3 & NP \\ \hline
+\end{tabular}
+\end{center}
+\item
+C.G.P.A.: 8.52
+\end{itemize}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\chapter{Introduction}
+
+%Ramsey Theory, named after British mathematician  Frank P. Ramsey deals with the partioning of  a set in k classes such that a given property holds. 
+% In Ramsey %theory of integers, we color n-positive integers in k colors such that the  property holds.\\
+
+%The most common Ramsey Number in integers is van der Waerden number that focuses on the existence of a monochromatic Arithmetic Progression of %certain length. Rado number talks about the existence of a monochromatic solution to a given linear equation in some k variables. A lot of research has been %done in this field during the last two decades but the exact value is still hard to find.Improving the existing bounds for Van der Waerden Numbers and Rado %Numbers is what people mainly aim for.\\
+%Throughout this report, we will focus on two Ramsey Numbers namely van der Waerden and Rado. In chapter 2, we will quote some main results on %van der Waerden Numbers and which would be relevant to my research. In chapter 3, some main results on Rado Numbers.
+
+Ramsey Theory, named after British mathematician  Frank P. Ramsey, deals with the partioning of a set in $r$ classes such that a given property holds. In Ramsey theory of integers, we typically colour the first $n$ positive integers in $r$ colors such that the  property holds. \\
+
+\noindent A few notations that we are going to use frequently: \\[10pt]
+$[n]=\{1,2,3,\ldots,n\}$ \\[5pt]
+$\N=\{1,2,3,\ldots \}$ \\[5pt]
+$[n]^k=\{Y: Y \subseteq [n] \:\text{and}\: |Y| = k\}$ \\[5pt]
+$[n]^{\le k}=\{Y: Y \subseteq [n] \:\text{and}\: |Y| \le k\}$ \\[5pt]
+
+%\noindent If $\chi$ is a map going from $[A]^k$, we are going to write $\chi(x_1,x_2,x_3,\ldots)$ instead of $\chi(\{x_1,x_2,x_3,\ldots \})$\\
+\noindent An $r$-coloring of a set $S$ is a map
+\[ \chi: S \rightarrow [r] \]
+
+\noindent Given $k \ge 1$ and integers ${\l}_1,\ldots,{\l}_r$, each at least $k$, we write 
+\[ n \rightarrow \big(\l_{1},\l_{2},\l_{3}, \ldots,\l_{r}\big)^k \] 
+to denote that for every $r$ colouring of $[n]^k$ there exist an $i$, where $1 \le i \le r$, and a set $S \subseteq[n]$ with cardinality ${\l}_i$ such that  $[S]^k$ is coloured $i$. We use the notation 
+\[ n \rightarrow \big(\l\big)^k_r \]
+to denote the special case $\l_i=\l$ for $1 \le i \le r$. \\
+
+\noindent The Ramsey function ${\R}\big(\l_{1},\l_{2}, \ldots ,\l_{r}\big)$ is the smallest positive integer $n$ such that 
+\[ n\rightarrow \big(\l_{1},\l_{2}, \ldots ,\l_{r}\big)^k. \]
+We use $\R(\l;r)$ to denote $\R \big(\l_{1},\l_{2}, \ldots ,\l_{r} \big)$ in the special case $\l_{1}=\l_{2}=\dots =\l_{r}$, and $\R(\l)$ for $\R(\l;2)$. \\
+
+\begin{itemize}
+\item
+\textbf{The Pigeon-Hole Principle:} \textit{If $m$ pigeons roost in $n$ holes and $m>n$ then at least two pigeons share the same hole.}
+\item
+\textbf{Ramsey's Theorem \cite{RT}, 1930} \\[5pt]  
+\textit{The function $\R$ is well defined for all values of $k,\l_1,\l_2, \ldots ,\l_r$ i.e. there exists $n_0$ such that for all $n \geq n_0$,}
+\[ n \rightarrow \big(\l_{1},\l_{2}, \ldots,\l_{r}\big)^k. \]
+\item
+\textbf{van der Waerden's Theorem \cite{VVW}, 1927}\\[5pt]  
+\textit{For all $k, r$ there exists $n_0$, such that for all $n \geq n_0$, if $[n]$ is $r$-coloured there exist a monochromatic arithmetic progression $\big\{a, a+d, a+2d, \ldots , a+(k-1)d\big\} \subseteq [n]$ of length $k$.}
+\item
+\textbf{Schur's Theorem \cite{IS}, 1916} \\[5pt]  
+\textit{For all $r$ there exists $n_0$ such that for all $n \geq n_0$, if $[n]$ is $r$-coloured there exist $x,y,z\in [n]$ monochromatic, so that}
+\[ x+y = z. \]
+\item
+\textbf{Rado's Theorem \cite{Rado1}, 1934} \\[5pt]  
+\textit{The single equation} 
+\[ c_1x_1 + c_2x_2 + \ldots +c_mx_m = 0 \]
+\textit{is regular if and only if some non empty subsets of $c_i$ sums up to zero.}
+\end{itemize}
+%\item
+%\textbf{Hales-Jewett Theorem \cite{HJ}, 1963} \\[5pt]  
+%\textit{For all $r, k$ there exist $n_0$ such that, for all $n \geq n_0$, if the $n$-dimensional cube}
+%\[ \Big\{ \big(x_1,x_2,\ldots,x_n \big): x_i \in \{0,1,2,\ldots,k-1 \big\}, 1 \leq i \leq n\Big\} \]
+%\textit{is $r$-coloured then we have a monochromatic `` line ''.}
+%\item
+%\textbf{Graham-Leeb-Rothschild \cite{GLR}, 1972} \\[5pt]  
+%\textit{Fix a finite field $F$ on $q$ elements. For all $k,l,r$ there exists $n_0$, so that the following holds all $n \geq n_0$. Let %$V$ be the $n$-dimensional vector space over the field $F$. Colour the $k$-dimensional subspaces of $V$ with $r$ colours. Then there %exists an $\ell$-dimensional subspace of $V$ all of whose $k$-dimensional subspaces have the same colour.}
+%\end{itemize}
+
+\noindent Throughout this report, we will focus on van der Waerden numbers and Rado numbers. In Chapter 2, we quote some main results on van der Waerden numbers and are going to be relevant to my research. In Chapter 3, some main results on Rado Numbers. A lot of research has been done in this field during the last two decades but the exact value is still hard to find. Improving the existing bounds for van der Waerden numbers and Rado numbers is what people mainly aim for.
+  
+
+\chapter{van der Waerden Numbers}
+
+\noindent Bartel Leendert van der Waerden (2 February 1903 -- 12 January 1996) was a Dutch mathematician. He gave the proof of van der Waerden theorem in the year 1927.
+
+\begin{thm} {\bf (van der Waerden \cite{RT})} \\[5pt] 
+For all $k,r \geq 1$ there exists a natural number $n_{0}$, such that for all $n \geq n_{0}$, if $[n]$ is $r-$coloured there exist a monochromatic arithmetic progression  $\big\{a,a+d,a+2d, \ldots ,a+(k-1)d\big\} \subseteq [n]$ of length $k$.
+\end{thm}
+
+\noindent van der Waerden number is the least possible natural number ${\w}(k,r) $ such that for every $r$ colouring of first $\w$ natural numbers we can always find a monochromatic arithmetic progression of length $k$. \\
+                                        
+\noindent The only known exact values for nontrivial van der Waerden numbers are:
+\[\w(3;2)=9, \quad \w(4;2)=35, \quad \w(5;2)=178, \quad \w(3;3)=27, \quad\w(3;4)=76. \]
+
+\begin{center}
+\begin{tabular}{|c||c|c|c|c|} \hline
+$r \rightarrow$ & $2$ & $3$ & $4$ & $5$ \\ 
+$k \downarrow$ & & & & \\ \hline \hline
+$3$ & $9$ & $27$ & $76$ & ? \\ \hline
+$4$ & $35$ & $\ge 292$ & $\ge 1048$ & $\ge 2254$ \\ \hline
+$5$ & $178$ & $\ge 1210$ & $\ge 10437$ & $\ge 24045$ \\ \hline
+$6$ & $\ge 696$ & $\ge 8886$ & $\ge 90306$ & $\ge 93456$ \\ \hline
+$7$ & $\ge 3703$ & $\ge 43855$ & $\ge 119839$ & $?$ \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{thm}{\bf (van der Waerden's Theorem -- Generalized Version)}\\[5pt] 
+For positive integers $k_1, k_2, \ldots, k_r$, there exists $n_0$ such that whenever $n \ge n_0$ and $[n]$ is $r$-coloured, there exists a $k_i$-term monochromatic arithmetic progression coloured $i$, for some $i \in [r]$. For positive integers $k_1, k_2, \ldots, k_r$, the smallest positive integer ${\w}(k_1, k_2, \ldots, k_r; r)=\w$ for which every $r$-colouring of $[{\w}]$ contains $k_i$-term monochromatic arithmetic progression of colour $i$, for atleast one $i \in [r]$, is called a mixed van der Waerden number.
+\end{thm} 
+
+\noindent Some known bounds on van der Waerden number are listed below:\\
+
+\begin{thm}  {\bf (E. Berlekamp \cite{EB})} \\[5pt]
+Let $p$ be a prime. Then 
+\[ {\w}(p+1;2) \ge p2^p. \]
+\end{thm}
+
+\begin{thm}
+Let $\epsilon>0$.There exist $k_{0}=k(\epsilon)$ such that for all $k \geq k_0$ 
+\[ {\w}(k;2) \geq \frac{2^{k}}{k^{\epsilon}}. \]
+\end{thm}
+
+\begin{thm}
+Let $p \geq 5$ and $q$ be primes. Then 
+\[ {\w}(p+1,q;2) \geq p(q^p-1)+1. \]
+\end{thm}
+
+\begin{thm}  {\bf (W. T. Gowers \cite{TG})} \\[5pt]
+For all $r\geq 2$,
+$${\w}(k,r)>\frac{r^k}{ekr}(1+\circ (1)).$$
+\end{thm}
+
+\begin{thm}{\bf (W. T. Gowers \cite{TG})} \\[5pt]
+Let $f(k,r)= r^{2^{2^{k+9}}}$. Then 
+\[ \w(k,r) \leq 2^{2^{f(k,r)}}. \]
+\end{thm}
+
+\section{Sequence of the type $\big\{x,ax+d,bx+2d\big\}$}
+
+\noindent van der Waerden theorem focuses on the existence of an arithmetic progression,whereas we would like to focus on a more general progression of the form $\big\{x,ax+d,bx+2d\big\}$ namely $(a,b)$ triple. Here $a$ and $b$ are fixed positive integers, $a \leq b$  and $x$ and $d$ are two positive integers.\\
+
+\noindent Our aim is to determine that for what values of $a,b$ and $r$, we have a number $T(a,b;r)$ such that when we $r$-colour the integers from $1$ to $T$, we have a monochromatic $(a,b)$ triple. There are a few known bounds for $T(a,b;r)$, and these are listed below.
+
+\begin{thm}{\bf (Allen, Landman \& Meeks {\cite{ALM})}} \\[5pt]
+Let $a,b$ be two positive integers where $a\le b$. When $b=2a$, then $T(a,b;r)$ exist only if $r=1$. Moreover 
+\[ T(a,b;2) \le \left \{ \begin{array}{ll}
+                                       7b^2-6ab+13b-10a & \mbox{for $b$ is even, $b>2a$}; \\
+                                       14b^2-12ab+26b-20a & \mbox{for $b$ is odd, $b>2a$};\\
+                                       3b^2+2ab+16a & \mbox{for $b$ is even, $b<2a$};\\
+                                       6b^2+4ab+8b+16a & \mbox{for $b$ is odd, $b<2a$}.
+                                     \end{array}
+                        \right. 
+\]
+\end{thm}
+
+\begin{thm}{\bf (Allen, Landman \& Meeks {\cite{ALM})}} \\[5pt]
+Let $a,b$ be two positive integers such that $ a\leq b$. Then
+\[ T(a,b;2) \geq \left\{ \begin{array}{ll}
+                                        2b^2+5b-2a+4 & \mbox{if $b>2a$};\\
+                                        3b^2+5b-4a+4 & \mbox{if $b<2a$}.
+                                       \end{array}
+                           \right. 
+\]
+\end{thm}
+
+\noindent Now we would like to focus on the case where $a=b$ and $r=2$. There are a few known bounds for $T(a,a;2)$. They are mentioned below.
+
+\begin{thm}{\bf (Allen, Landman \& Meeks {\cite{ALM})}} \\[5pt] 
+For $a \ge 4$,  
+\[ T(a,a;2) \ge a^2+3a+8. \]
+\end{thm}
+
+\begin{thm}{\bf (Landman \& Robertson \cite{LR02})} \\[5pt]
+\[ T(a,a;2) \leq \left\{ \begin{array}{ll}
+                                        3a^2+a & \mbox{for $a$ even, $a \ge 4$}; \\
+                                        8a^2+a & \mbox{for $a$ is odd}.
+                                       \end{array}
+                           \right. 
+\]
+\end{thm}
+
+%\section{Proposed Research Work}
+
+%\noindent  Value of $T(a,b;r)$ depends on $a,b$ and $r$. Therefore for any given $(a,b)$ one has to determine the degree of %regularity and then work on $T(a,b;r)$. Now for $(a,b)\neq(1,1)$ it has been shown that degree of regularity is always less than or %equal to 23. We would like to work on an $(a,b)$ triple and determine it's degree of regularity and then work on $T(a,b;r)$. The %other thing that we are focussing on is the case where $a=b$. We know that for $r=2$, $T(a,a;2)$ exists. We have well defined bounds %for it. It is difficult to determine the exact value of $T(a,a;2)$ as the number of colourings to be considered everytime increases %exponentially and therefore it becomes really hard to rule out cases even with a computer program. But one can always work on %improving the existing bounds as the  gap between them is quite large and, if possible, get an exact value. We would be working to %improve the existing bounds.  
+
+\chapter{Rado Numbers}
+
+\noindent Richard Rado (28 April 1906 -- 23 December 1989) was a German-born British mathematician. He was a doctoral student of Issai Schur and therefore extended his work. So, before talking about Rado numbers, one should be familiar with Schur numbers. Rado number is nothing but the generalization of Schur numbers.
+
+\section{Schur numbers}
+
+\noindent Schur numbers are the least positive number $s=\tt{s(r)}$ such that for every $r$-colouring of first $s$ positive integers or $[1,s]$, we have a monochromatic solution to the equation $x+y=z$.
+
+\begin{thm} {\bf (I. Schur \cite{IS})}\\[5pt] 
+For any $ r\ge 1$, there exist a positive integer $\tt{s(r)}$ such that for every $r$ colouring of $[1,\tt{s(r)}]$, we have a monochromatic solution to the equation $ x+y=z$.
+\end{thm}
+
+\noindent A triple $\big(x, y, z \big)$ that satisfies the equation $x+y=z$ is called a Schur triple. The only known exact values for Schur numbers are:
+\[ \tt{s(1)}=2, \quad \tt{s(2)}=5, \quad \tt{s(3)}=14, \quad \tt{s(4)}=45. \]
+
+\noindent The colouring used in the proof of Schur's Theorem gives a bijection between edge colouring of ${\K}_n$ and colouring of $[n-1]$. The definition of this colouring implies that monochromatic triangles correspond to Schur triples. With $n={\R}_r(3)$, this gives
+\[ \frac{1}{2}(3^r+1) \le \tt s(r) \le {\R}_r(3)-1 \le 3r!-1. \]
+
+\noindent Let $L(t)$ represents the equation $x_1+x_2+\ldots+x_{t-1}=x_t$ where $ x_1,x_2, \ldots ,x_t$ are the unknown variables.
+
+\begin{thm}{\bf (A. Robertson \cite{AR})} \\[5pt]
+For $r \ge 1$ and, for $1 \le i \le r$, assume that $k_i \ge 3$. Then there exist a least positive integer $S={\S}(k_1, k_2,\ldots,k_r) $, such that for every $r$-colouring of $[1,S]$, we have a monochromatic solution to $L(k_j)$ of colour $j$ where $j \in \{1,2,\ldots,r\}$.
+\end{thm}
+
+\noindent The numbers $S={\S}(k_1,k_2,\ldots,k_r)$ are called {\tt generalized Schur numbers}. When $k_1=k_2=\ldots=k_r=k$, we denote it by ${\S}_r(k)$.\\
+
+\noindent We have a theorem that gives us the exact values for all $2$-coloured generalized Schur numbers.
+
+\begin{thm}
+Let $k,\ell \ge 3$. Then
+\[ {\S}(k;\ell) = \left\{ \begin{array}{ll}
+                            3\ell-4 & \mbox{for $k=3$ and $\ell$ is odd};\\
+                            3\ell-5 & \mbox{if $k=3$ and $\ell$ is even};\\
+                            k\ell-\ell-1 & \mbox{if $4 \leq k \leq \ell$}. 
+                                  \end{array}
+                \right.
+\]  
+\end{thm}
+
+\noindent We have an upper and lower bound for generalized Schur number $\S_r(k)$ too.
+
+\begin{thm}
+Let $r \ge 2$. If $k \ge 3$, then $\S_r(k) \le \R_r(k)-1$, i.e., for every $r$-colouring of ${\K}_\R$ we have monochromatic ${\K}_k$ in some colour $j \in\{1,2,\ldots,\R\}$.
+\end{thm}
+
+\begin{thm}
+Let $r \ge 2$. If $ k \ge 3$, then 
+\[ \S_r(k) \ge \frac{k^{r+1}-2k^r+1}{k-1}. \]
+\end{thm}
+
+\noindent Now we will introduce the concept of {\tt regularity}. Let $S$ be a system of linear homogeneous equations. We say that $S$ is $r$-{\tt regular} if, for every $r$-colouring of positive integers, there is a monochromatic solution to $S$. If $S$ is $r$-regular for all $r \ge 1$, then $S$ is said to be {\tt regular}. 
+
+\section{Rado numbers}
+
+\begin{thm} {\bf (R. Rado \cite{IS})} \\ [5pt]
+Let $k \ge 2$. Let $ c_i$ be non zero integers, $1 \le i \le k$, be constants. Then 
+\[ \sum_{i=1}^k c_ix_i = 0 \] 
+is regular if and only if there exists a non-empty $D \subseteq \{c_i: 1 \le i \le k\}$ such that $\sum_{d \in D} d=0$.
+\end{thm}
+
+\begin{thm} {\bf (R. Rado \cite{IS})} \\ [5pt]
+ Let $\epsilon (b)$ represent the linear equation
+\[c_1x_1+c_2x_2+\ldots+c_kx_k=b,\]
+where $k\ge 2$ and each $c_i$ is a nonzero integer. Let $s=c_1+\ldots+c_k$. Then the equation $\epsilon (b)$ is regular if and only if either 
+\begin{itemize} 
+\item[{\rm (i)}]
+$\frac{b}{s}$ is a positive integer or
+\item[{\rm (ii)}]
+$\frac{b}{s}$  is a negative integer and $\epsilon(0)$ is regular.
+\end{itemize}
+\end{thm}
+
+\begin{thm}{\bf (Rado's ``Columns Condition")}\\ [5pt]
+Let $C=\big(\ora{c_1}, \ldots, \ora{c_n}\big)$ be a $k \times n$ matrix, where $\ora{c_i} \in \Z^k $ for $1 \le i \le n.$ We say that $C$ satisfies the``{\tt \/Columns Condition}" if we can order the columns $\ora{c_i}$ with indices $1=i_0 < i_1 < \ldots <i_s=n$ such that the following two conditions holds for $\ora{s_j}=\sum_{i_{j-1}+1}^{i_j}\ora{c_i}$ for $2 \le j \le t$.
+\begin{itemize}
+\item[{\rm (i)}]
+$\ora{s_1}=\ora 0$;
+\item[{\rm (ii)}]
+$\ora{s_j}$ can be expressed as a linear combination of $\ora{c_1}, \ldots, \ora{c_{j-1}}$ for  $2 \le j \le t$.
+\end{itemize}
+\end{thm}
+
+\begin{thm}{\bf (Rado's Theorem for a system of equations)}{\bf (R. Rado, \cite{Rado1,Rado2,Rado3})} \\[5pt]
+A system of linear homogeneous equations $S$ denoted by $A \ora{x}=0$ is regular if and only if $A$ satisfies the ``{\tt \/Columns Condition}". Moreover $S$ has a monochromatic solution of distinct positive integers if and only if $S$ is regular and there exist distinct (not necessarily monochromatic integers) that satisfy $S$.
+\end{thm}
+
+\begin{thm}{\bf  (D. Schaal \cite{DS})} \\[5pt]
+Let $b \geq 1$, $k \geq 3$, and let $\epsilon(b)$ represent the equation $x_1+\ldots+x_{k-1}-x_k=-b$. Then Rado number ${\tt{r}}(\epsilon(b);2)$ does not exist precisely when $k$ is even and $b$ is odd. Furthermore, we have
+\[{\tt{r}}(\epsilon(b);2) = k^2+(b-1)(k+1) \]
+whenever $\tt{r}(\epsilon(b);2)$ exists.
+\end{thm}
+
+\begin{thm}{\bf (Burr \& Loo {\cite{BL}})} \\[5pt]
+For $b \geq 1$, Rado number {\tt{r}}(x+y-z=b;2) is 
+\[ {\tt{r}}(x+y-z=b;2) = b - \left\lceil \frac{b}{5} \right\rceil + 1. \]
+\end{thm}
+
+\noindent Now some known Rado numbers for any given equation and the number of colours used is $2$. 
+
+\begin{thm}{\bf (Hopkins \& Schaal {\cite{HS}})} \\[5pt]
+Let $a_1,\ldots,a_{m-1}$ be positive integers, $m \ge 3$. Let $t=\min\{a_1,a_2,\ldots,a_{m-1}\}$ and $b=a_1+a_2+\ldots+a_{m-1}-t$. Then Rado number ${\tt{r}}(a_1x_1+\ldots+a_{m-1}x_{m-1}=x_m;2)$ is
+\[ {\tt{r}}(a_1x_1+\ldots+a_{m-1}x_{m-1}=x_m;2) \geq tb^2+(2t^2+1)b+t^3. \]
+Moreover, if $t=2$, 
+\[ {\tt{r}}(a_1x_1+\ldots+a_{m-1}x_{m-1}=x_m;2) = 2b^2+9b+8. \].
+\end{thm}
+
+\begin{thm}{\bf (Burr \& Loo) {\cite{BL}})} \\[5pt]
+Let $a,b \geq 1$ with $(a,b)=1$. Then Rado number in $2$ colours {\tt{r}}(ax+by=bz;2) is
+\[ {\tt{r}}(ax+by=bz;2) = \left\{ \begin{array}{ll}
+                            a^2+3a+1 & \mbox{if $b=1$};\\
+                            b^2 & \mbox{if $a<b$};\\
+                            a^2+a+1 & \mbox{if $2 \leq b \leq a$}. 
+                                        \end{array}
+                           \right.
+\]
+\end{thm}
+
+\begin{thm}{\bf (Grynkiewicz) {\cite{DJG}})} \\[5pt]
+Let us consider the equation $x_1+x_2-2x_3=c$ where $c$ is any integer. Now a few restraints on the given equation.
+\begin{eqnarray*}
+L_1(c) = & x_1+x_2-2x_3=c, & \\
+L_2(c) = & x_1+x_2-2x_3=c, & x_i \neq x_j \text{where} i \neq j,\\
+L_3(c) = & x_1+x_2-2x_3=c, & x_1>x_2>x_3, \\
+L_4(c) = & x_1+x_2-2x_3=c, & x_3>x_2>x_1, \\
+L_5(c) = & x_1+x_2-2x_3=c, & x_1>x_3>x_2.
+\end{eqnarray*}
+and $S_i(c)$ corresponds to $L_i(c)$. $S_i(c)$ denotes the minimum integer, if it exists, such that for every $2$ colouring from $[S_i(c)]  \rightarrow  \{0,1\}$, we have a monochromatic solution for the given equation and, otherwise $S_i(c)=\infty.$ Then
+\begin{itemize}
+\item[{\rm (i)}]
+For $i \in [5]$ and $c$ odd, $S_i(c)=\infty$.
+\item[{\rm (ii)}] 
+For $c$ even, $S_1(c)=|c|+1$.
+\item[{\rm (iii)}]
+For $c \geq 10$ and even, $S_3(c)=S_2(c)=c+4$.
+\item[{\rm (iv)}]
+For $c \leq -10$ and even, $S_2(c)=S_4(c)=-c+4$.
+\item[{\rm (v)}]
+For $c \leq 8$ and even, $S_3(c)=\infty$.
+\item[{\rm (vi)}]
+For $c \geq -8$ and even, $S_4(c)=\infty$.
+\item[{\rm (vii)}]
+For $c$ even, $S_5(c)=2|c|+10$.
+\end{itemize}
+\end{thm}
+
+\begin{thm} {\bf (Guo \& Sun {\cite{GS}})} \\[5pt]
+Let $a_1,\ldots,a_m$ be some positive integers and the equation under cosideration is $\sum_{i=1}^m a_ix_i=x_{m+1}$. Then the Rado number ${\tt{r}}(\sum_{i=1}^m a_ix_i=x_{m+1};2)$ is $av^2+v-a$, where $a=\min(a_1,\ldots,a_m)$ and $v=\sum_1^m a_i$. 
+\end{thm}
+
+\begin{thm} {\bf (Schaal {\cite{DS}})} \\[5pt]
+For every integer $m$ and $c$, let ${\tt{r}}(m,c)$ denote the $2$ colour Rado number for the equation $\sum_{i=1}^{m-1} x_i + c=x_m$. If $m$ is odd or $c \geq 0$ and even, then ${\tt{r}}(m,c)=m^2+(c-1)(m+1)$.
+\end{thm}
+
+\begin{thm} {\bf (Beutelspacher \& Brestovansky {\cite{BB}})} \\[5pt]
+For every integer $m$ and $c$, let ${\tt{r}}(m,c)$ denote the $2$ colour Rado number for the equation $\sum_{i=1}^{m-1} x_i + c=x_m$. For $m \geq 3$ and $c=0$, ${\tt{r}}(m,0)=m^2-m-1$.
+\end{thm}
+
+\begin{thm} {\bf (Kosek \& Schaal {\cite{KS}})} \\[5pt]
+For every integer $m \geq 3$ and every integer $c$, let ${\tt{r}}(m,c)$ denote the $2$ colour Rado number for the equation $\sum_{i=1}^{m-1} x_i + c=x_m$. Here $m$ is even or $c$ is odd as ${\tt{r}}(m,c)=\infty$ when $m$ is even and $c$ is odd. Then for $c<0$, we have the following cases
+\[ {\tt{r}}(m,c) = \left \{ \begin{array}{ll}
+                                       m^2-(c-1)(m+1) & \mbox{when $-m+2<c<0$}; \\
+                                       2 & \mbox{when $c=-2(m-2)$};\\
+                                       3 & \mbox{when $c=-2(m-2)-1$};\\
+                                       j(m-1)+c & \mbox{where $-j(m-2) \leq c \leq -(j-1)(m-1)$,} \\
+                                                & \mbox{$j=3,\ldots,m-1$};\\
+                                       \big \lceil {\frac {1-(m+1)c}{m^2-m-1}} \big \rceil & \mbox{when $c<-(m-1)(m-2)$}.
+                                     \end{array}
+                        \right. 
+\]
+Moreover ${\tt{r}}(m,c) \leq m$ when $-2(m-2)+1 \leq c \leq -m+2$.
+
+\end{thm}
+
+\begin{thm}{\bf (Gupta, Thulasirangan \& Tripathi {\cite{GTT}})} \\[5pt]
+For the equation of the form $ax+by=(a+b)z$ where $a$ and $b$ are integers, Rado number ${\tt{r}}(ax+by=(a+b)z;2)$ is given by
+\[ {\tt{r}}(ax+by=(a+b)z;2) = \left\{ \begin{array}{ll}
+                            4(a+b)-1 & \mbox{if $a=1$ or $4\mid b$ or $(a,b)=(3,4)$};\\
+                            4(a+b)+1& \mbox{otherwise}.
+                                      \end{array}                                  
+                             \right.
+\]
+\end{thm}
+
+\begin{thm} {\bf (Burr \& Loo {\cite{BL}})} \\[5pt]
+For $a\geq 1$, 
+\[ {\tt {r}} (ax+ay=z;2) = a(4a^2+1). \]
+\end{thm}
+
+%\section{Proposed Research Work}
+
+%\noindent A linear equation of the form $\Sigma_1^{j-1}a_ix_i=a_jx_j$ is regular if it satisfies Rado's theorem. This gives us a %general idea what sort of coefficients should be there in order to have a well defined Rado number corresponding to a given equation %and for all values of $r$. One thing that we would like to work on is an equation with three variables i.e. $a_1x_1+a_2x_2=a_3x_3$ %where $a_1+a_2=a_3$. It is regular and has been calculated for $2$ colours. One can always work with $3$ colours and work on it's %Rado number. Other thing would be to generalize the case i.e. $\Sigma_1^{j-1} a_i=a_j$ with $2$ colours and improve the existing %bounds and if possible get an exact value. %There has been a lot work done in this particular field of Ramsey Theory.Since Rado's %theorem gives us a general idea about any %linear homogeneous equation, a lot of people focus on a particular equation and work upon %it.In the best case scenario, exact value %is determined otherwise bounds gives us an idea about that particular Rado number.It's a %hard enough problem.Exact value of Rado %numbers is known for a very few equations. We are going to work on Rado number for some %general equation and hopefully get some %better results than the existing one or an exact value for that particular equation.
+
+\chapter{Proposed Work}
+
+\noindent I propose to investigate aspects of Ramsey theory related to van der Waerden's theorem and to Rado's theorem. For every pair of positive integers $k$ and $r$, van der Waerden's theorem gives us the existence of a monochromatic $k$-term arithmetic progression for every $r$ colouring of the set of integers in $[1,n]$, for all sufficiently large values of $n$. The set $\{x,ax+d,bx+2d\}$ is a generalization of an arithmetic progression since $a=b=1$ makes the elements in one. Moreover, for any $a,b$, $(2a-b)x-2(ax+d)+(bx+2d)=0$, making the elements of the set fall under the category of Rado's theorem as well.  
+\begin{itemize}
+\item
+Existence of $T(a,b;r)$ depends on $a,b$ and $r$, but is not guaranteed. One has to first to determine the degree of regularity before trying to determine $T(a,b;r)$. For $(a,b)\neq (1,1)$, it has been shown that degree of regularity is always less than or equal to $23$ by Fox and Rado\.{i}\v{c}\.{i}\'{c} {\cite{FR}}. For every pair of integers $a,b$, we propose to determine the degree of regularity, and determine or estimate $T(a,b;r)$.
+\item
+We would like to focus on the case where $a=b$. We know that for $r=2$, $T(a,a;2)$ exists. Whereas bounds for $T(a,a;2)$ exist, the  gap between the upper and lower bounds is quite large. The exact value where $a=b$ has been calculated upto $7$ with the help of a programme in the paper by Landman and Robertson {\cite{LR02}}. We propose to improve the upper and lower bounds, thereby decreasing the gap between them, and if possible, to find the exact value for $T(a,a;2)$. We also hope to find bounds for $T(a,a;r)$ for $r>2$.   
+\item
+A linear equation of the form $\sum_{i=1}^{k-1} a_ix_i=a_kx_k$ is regular if it satisfies Rado's theorem. The Rado numbers for the $2$-colour case corresponding to $k=3$ has been completely resolved. We hope to look at the $2$-colour case for $k>3$, and also hope to give some bounds for the general case with $r$ colours for $k=3$.   
+\end{itemize}
+%There has been a lot work done in this particular field of Ramsey Theory.Since Rado's theorem gives us a general idea about any %linear homogeneous equation, a lot of people focus on a particular equation and work upon it.In the best case scenario, exact value %is determined otherwise bounds gives us an idea about that particular Rado number.It's a hard enough problem.Exact value of Rado %numbers is known for a very few equations. We are going to work on Rado number for some general equation and hopefully get some %better results than the existing one or an exact value for that particular equation.
+
+%\bibliography{plain}
+\begin{thebibliography}{99}
+
+
+\bibitem{ALM}
+P. Allen, B. Landman and H. Meeks, New Bounds on van der Waerden type numbers for Generalized $3$-term Arithmetic Progressions, {\it arXiv: 1201.3842v2}
+
+
+\bibitem{BL}
+S. Burr and S. Loo, On Rado numbers II, unpublished.
+
+\bibitem{EB}
+E. Berlekamp, A construction for partitions which avoid long length arithmetic progressions, {\it Canadian Math Bulletin\/} {\bf 11} (1968), 409--414.
+
+
+\bibitem{BB}
+A. Beutelspacher and W. Brestovansky, `` Generalized Schur Numbers '', Lecture Notes in Mathematics, Springer-Verlag, Berlin, Vol. 969   pp.30--38, 1982. 
+
+\bibitem{FLR}
+N. Frantzikinakis, B. Landman and A. Robertson, On degree of regularity of generalized van der Waerden triples, {\it Advances in Applied Mathematics\/} {\bf 37} (2006), 124--128.
+
+\bibitem{FR}
+J. Fox and R. Rado\. {i}\v {c}\. {i}\' {c}, On the degree of regularity of generalized van der Waerden triples, preprint.
+
+\bibitem{DJG}
+D. J. Grynkiewicz, On some Rado numbers for generalized arithmetic progression, {\it Discrete Mathematics\/} {\bf 280} (2004), 39--50.
+
+\bibitem{GRS90}
+R. L. Graham, B. L. Rothschild and J. H. Spencer, Ramsey Theory, Second Edition, Wiley, 1990.
+
+\bibitem{GLR}
+R. L. Graham, L. Leeb and B. L. Rothschild, Ramsey Theorem for a class of categories, {\it Adv. Math.\/} {\bf 8} (1972), 417--433.
+
+\bibitem{GS}
+Song Guo and Zhi-Wei Sun, Determination of two colour Rado numbers for $\Sigma_1^m a_ix_i=x_{m+1}$, {\it Journal of Combinatorial Theory\/} {\bf 115} (2008), 345--353.
+
+\bibitem{TG}
+W. T. Gowers, A new proof of Szemer\`{e}di's theorem, {\it Geometric and Functional Analysis\/} {\bf 11} (2001), 465--588.
+
+\bibitem{GTT}
+S. Gupta, J. Thulasirangan and A. Tripathi, The two-colour Rado number for the equation $ax+by=(a+b)z$, {\it Annals of Combinatorics\/} (to appear)
+
+\bibitem{HJ}
+A. W. Hales and R. I. Jewett, Regularity and Positional Games, {\it Trans. Amer. Math. Soc.\/} {\bf 106} (1963), 222--229.
+
+\bibitem{HS}
+B. Hopkins and D. Schaal, On Rado numbers for $a_1x_1+\ldots+a_{m-1}x_{m-1}=x_m$, {\it Advances in Applied Mathematics\/} {\bf35} (2005), 433--441.
+
+\bibitem{KS}
+W. Kosek and D. Schaal, Rado number for the equation $\Sigma_1^{m-1} x_i + c=x_m$, for negative values of $c$, {\it Advances of Applied Mathematics\/} {\bf 27} (2001), 805--815.
+
+\bibitem{LR03}
+B. Landman and A. Robertson, Ramsey Theory on the Integers, Student Mathematical Library, Vol. 24, AMS, 2003. 
+
+\bibitem{LR02}
+B. Landman and A. Robertson, On generalized van der Waerden triples, {\it Discrete Mathematics\/} {\bf  256} (2002), 279--290.
+
+\bibitem{AR}
+A. Robertson, Difference Ramsey numbers and Issai numbers, {\it Advances Applied Math.\/} {\bf 25} (2000), 153--162.
+
+\bibitem{RT}
+F. P. Ramsey, On a Problem of Formal Logic, {\it Proc. London Math. Soc.\/} {\bf 30} (1930), 264--286.
+
+\bibitem{Rado1}
+R. Rado, Some recent results in combinatorial analysis, {\it Congr\`{e}s International des Mathematiciens\/}, Oslo, 1936.
+
+\bibitem{Rado2}
+R. Rado, Studien zur Kombinatorik, {\it Mathematische Zeitschrift\/} {\bf 36} (1933), 424--480.
+
+\bibitem{Rado3}
+R. Rado, Verallgemeinerung eines Satzes von van der Waerden mit Anwendungen auf ein Problem der Zahlentheorie, {\it Sonderausg. Sitzungsber. Preuss. Akad. Wiss. Phys.-Math. Klasse\/} {\bf 17} (1933), 1--10.
+
+\bibitem{DS}
+D. Schaal, On generalized Schur numbers, {\it Congressum Numerantium\/} {\bf 98} (1993), 178--187.
+
+\bibitem{IS}
+I. Schur, Uber die Kongruenz $x^m+y^m=z^m \bmod{m}$, {\it Jahresbehricht der Deutschen Mathematiker-Vereinigung\/} {\bf 25} (1916), 114--117.  
+
+\bibitem{VVW}
+B. L. van der Waerden, Beweis einer Baudetschen Vermutung, {\it Nieuw Arch. Wisk. \/} {\bf 15} (1927), 212--216.
+
+\end{thebibliography}
+
+\end{document}  
