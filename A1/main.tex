@@ -5,6 +5,9 @@
 %\usepackage{dsfont}
 \usepackage{setspace}
 \usepackage{graphicx}
+\usepackage{multicol}
+\usepackage[document]{ragged2e}
+
 
 \def\w{\mathtt w}
 \def\K{\mathcal K}
@@ -20,57 +23,112 @@
 \begin{document}
 
 \begin{center}
-\LARGE{\textbf{Some Topics in Ramsey Theory}}\\
-%\large{\textbf{Research Plan}}\\[5pt]
+\LARGE{\textbf{Indian Institute of Technology, Delhi}}\\
+\vspace{1cm}
+\large{\textbf{Design Practices in Computer Science}}\\[5pt]
+\large{\textbf{COP290}}\\[5pt]
+\large{\textbf{Mathematical Model}}\\[5pt]
 %by \\
-\vspace{1in}
+\vspace{0.5cm}
 
-\Large{\textbf{Srashti Dwivedi}} \\[5pt]
-(2013MAZ8162)\\[10pt]
-Under the Guidance of \\
-\Large{\textbf{Prof. Amitabha Tripathi}}
-\vspace{1in}
+\large{\textbf{Design and Implement a Software }}
+\large{\textbf{\\for Engineering Drawing}}\\[5pt]
+
+
+
+%\vspace{1in}
 
 \begin{center}
 \includegraphics[height=4.5cm]{iitd.jpeg}
 \end{center}
 \vspace{0.2cm}
-\textbf{Department of Mathematics} \\
-\textbf{Indian Institute of Technology, Delhi}\\
-\textbf{20 January 2015}
+
+\textbf{January 18, 2018} \\
+\textbf{Department of Computer Science and Engineering} \\
+%\textbf{Indian Institute of Technology, Delhi}\\
+%\textbf{16 January 2018}
+
+
+\vspace{2cm}
+
+
+\begin{multicols*}{2}
+
+\begin{flushleft}
+
+\textit{Authors :\\ }
+
+
+\textbf{Udit Jain} \\
+(2016CS10327)\\
+\textbf{Shashank Goel}
+(2016CS10332)\\
+
+\end{flushleft}
+
+
+\columnbreak
+
+\begin{flushleft}
+
+\textit{\\Supervisor :\\ }
+\textbf{Prof. Subhashish Bannerjee} \\[5pt]
+
+\end{flushleft}
+
+\end{multicols*}
+
 \end{center}
 
 \newpage
 
+
+
 \begin{center}
-\Large \bf PROFILE
+\Large \bf ABSTRACT
 \end{center}
 \vspace{0.2in}
 
-\begin{itemize}
-\item
-Name: Srashti Dwivedi
-\item
-Entry No.: 2013MAZ8162
-\item
-Date of joining: 19 July 2013
-\item
-Coursework: Completed
-\item
-Courses Opted:
-\begin{center}
-\begin{tabular}{|c|c|l|c|l|}\hline
-No. & Course Code & Course Title & Credit & Grade \\ \hline
-1. & MAL860 & Linear Algebra & 3 & A- \\ \hline
-2. & MAL705 & Discrete Mathematics & 3  &A \\ \hline
-3. & MAL735 & Number Theory & 4 & B- \\ \hline
-4. & MAL 863 & Algebraic Number Theory & 3 & A- \\ \hline
-5. & HUL 810 & Communication Skills & 3 & NP \\ \hline
-\end{tabular}
-\end{center}
-\item
-C.G.P.A.: 8.52
-\end{itemize}
+We are going to design and implement a Software Package for Engineering drawing that shall be described and portrayed in a series of five steps to finely work out the design, analysis and the modelling.
+\\
+\vspace{0.3cm}
+The package will have the following functionalities:
+
+\begin{enumerate}
+  \item
+  We will be able to interactively input or read from a file either
+  \begin{itemize}
+    \item
+    An isometric drawing and a 3D object model 
+    \item
+    Projections onto any cross section
+  \end{itemize}
+  \item
+  For a given 3D model description, the software will be able to generate projections onto any cutting plane or any cross section
+  \item
+  Given two or more projections, we will be able to interactively reconstruct the 3D model of the object and produce the isometric view along any view direction
+
+\end{enumerate}
+
+\vspace{0.5cm}
+In this design project, we shall work as developers and algorithm enthusiasts to understand the ways and finding different means to approach and tackle the objectives in a more well defined mathematical way. The solutions shall be presented not completely on how the human brain formulates or understands/interprets a given figure, be it 2D or 3D but in a way, that shall work out in all the cases we deal with in real life and definitely be understandable by the machine. Mathematical explanations that are more amenable to intuition are given.
+
+\\
+\vspace{0.2cm}
+
+Being an amateur in this field of design of software to compute projections and reconstruction of the model, it might eventually happen that the algorithm might fail in some cases or it may be proved that such an algorithm cannot exist or the model be correct but be based on certain assumptions on the construction of the object or the projections. Nevertheless, we shall work with full confidence and zeal to achieve the goal or reach to quite an end of the problem so that using our lemmas, proofs and knowledge, someday a perfect model can be implemented using a software by some other Computer Explorer. 
+\\
+\vspace{0.2cm}
+
+As a matter of interest, we just wish to argue that these things can be computed by our brain so we do hope to find a solution to this problem using machine learning algorithms. Since, Machine Learning algorithms are more or less based on Mathematical matrices, with the use of computer graphics, we expect to find a start with matrices that we have dealt with further in this report. 
+
+% \begin{tabular}{|c|c|l|c|l|}\hline
+% No. & Course Code & Course Title & Credit & Grade \\ \hline
+% 1. & MAL860 & Linear Algebra & 3 & A- \\ \hline
+% 2. & MAL705 & Discrete Mathematics & 3  &A \\ \hline
+% 3. & MAL735 & Number Theory & 4 & B- \\ \hline
+% 4. & MAL 863 & Algebraic Number Theory & 3 & A- \\ \hline
+% 5. & HUL 810 & Communication Skills & 3 & NP \\ \hline
 
 \newpage
 
@@ -80,13 +138,8 @@ C.G.P.A.: 8.52
 
 \chapter{Introduction}
 
-%Ramsey Theory, named after British mathematician  Frank P. Ramsey deals with the partioning of  a set in k classes such that a given property holds. 
-% In Ramsey %theory of integers, we color n-positive integers in k colors such that the  property holds.\\
+In the last ten years, a significant progress occurred in the area of 3D graphics. Many studies have been conducted in the field of 3D modelling, and a variety of methods that allow us to reconstruct 2D images into 3D were created. Today, 3D graphics industry creates models that can no longer be distinguished from a person in the real world or on photograph. This way of modelling is also the goal of this work; to explore options to create a photorealistic 3D model shaped from the 2D images. This article has listed and briefly described methods of converting 2D images into 3D models.
 
-%The most common Ramsey Number in integers is van der Waerden number that focuses on the existence of a monochromatic Arithmetic Progression of %certain length. Rado number talks about the existence of a monochromatic solution to a given linear equation in some k variables. A lot of research has been %done in this field during the last two decades but the exact value is still hard to find.Improving the existing bounds for Van der Waerden Numbers and Rado %Numbers is what people mainly aim for.\\
-%Throughout this report, we will focus on two Ramsey Numbers namely van der Waerden and Rado. In chapter 2, we will quote some main results on %van der Waerden Numbers and which would be relevant to my research. In chapter 3, some main results on Rado Numbers.
-
-Ramsey Theory, named after British mathematician  Frank P. Ramsey, deals with the partioning of a set in $r$ classes such that a given property holds. In Ramsey theory of integers, we typically colour the first $n$ positive integers in $r$ colors such that the  property holds. \\
 
 \noindent A few notations that we are going to use frequently: \\[10pt]
 $[n]=\{1,2,3,\ldots,n\}$ \\[5pt]
