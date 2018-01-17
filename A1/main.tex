@@ -17,9 +17,10 @@
 \def\S{\mathcal S}
 \def\Z{\mathbb Z}
 \def\ora{\overrightarrow}
-\newtheorem{thm}{Theorem}[chapter]
-\newtheorem{defn}{Definition}[chapter]
 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
 \begin{document}
 
 \begin{center}
@@ -39,7 +40,7 @@
 %\vspace{1in}
 
 \begin{center}
-\includegraphics[height=4.5cm]{iitd.jpeg}
+\includegraphics[height=4.5cm]{image5.eps}
 \end{center}
 \vspace{0.2cm}
 
@@ -113,7 +114,6 @@ The package will have the following functionalities:
 \vspace{0.5cm}
 In this design project, we shall work as developers and algorithm enthusiasts to understand the ways and finding different means to approach and tackle the objectives in a more well defined mathematical way. The solutions shall be presented not completely on how the human brain formulates or understands/interprets a given figure, be it 2D or 3D but in a way, that shall work out in all the cases we deal with in real life and definitely be understandable by the machine. Mathematical explanations that are more amenable to intuition are given.
 
-\\
 \vspace{0.2cm}
 
 Being an amateur in this field of design of software to compute projections and reconstruction of the model, it might eventually happen that the algorithm might fail in some cases or it may be proved that such an algorithm cannot exist or the model be correct but be based on certain assumptions on the construction of the object or the projections. Nevertheless, we shall work with full confidence and zeal to achieve the goal or reach to quite an end of the problem so that using our lemmas, proofs and knowledge, someday a perfect model can be implemented using a software by some other Computer Explorer. 
@@ -130,7 +130,7 @@ As a matter of interest, we just wish to argue that these things can be computed
 
 \chapter{Introduction}
 
-In the last ten years, a significant progress occurred in the area of 3D graphics. Many studies have been conducted in the field of 3D modelling, and a variety of methods that allow us to reconstruct 2D images into 3D were created. Today, 3D graphics industry creates models that can no longer be distinguished from a person in the real world or on photograph. This way of modelling is also the goal of this work; to explore options to create a photorealistic 3D model shaped from the 2D images. This article has listed and briefly described methods of converting 2D images into 3D models.
+In the last ten years, a significant progress occurred in the area of 3D graphics. Many studies have been conducted in the field of 3D modeling, and a variety of methods that allow us to reconstruct 2D images into 3D were created. Today, 3D graphics industry creates models that can no longer be distinguished from a person in the real world or on photograph. This way of modeling is also the goal of this work; to explore options to create a photo-realistic 3D model shaped from the 2D images. This article has listed and briefly described methods of converting 2D images into 3D models.
 \vspace{1cm}
 
 The following objectives are aimed to be covered in this paper:
@@ -151,7 +151,6 @@ The following objectives are aimed to be covered in this paper:
   
 \end{itemize}
 
-\\
 \vspace{0.5cm}
 
 We shall study the direction cosines and direction ratios of a line joining two points and also discuss about the equations of lines and planes in space under different conditions, angle between two lines, two planes, a line and a plane, shortest distance between two skew lines and distance of a point from a plane. Most of the above results are obtained in vector form. Nevertheless, we shall also translate these results in the Cartesian form which, at times, presents a clearer geometric and analytic picture of the situation.
@@ -163,9 +162,9 @@ We shall further study the Vector Algebra and the 3D Transformations required to
 
 \chapter{Vector Algebra and 3D Transformation}
 
-\section{Homogenous coordinate System}
+\section{Homogeneous coordinate System}
 
-Three-dimensional scene description requires mainly using a 3D cartesian coordinate system. Points in space are uniquely determined by their three \textit{ cartesian coordinates $(x, y, z)$ } .
+Three-dimensional scene description requires mainly using a 3D Cartesian coordinate system. Points in space are uniquely determined by their three \textit{ Cartesian coordinates $(x, y, z)$ } .
 
 \vspace{0.5cm}
 \noindent Of greater importance for computer graphics is the usage of \textit{ homogeneous} or \textit{projective coordinates }. Ordinary points in space are given four coordinates instead of three:
@@ -176,7 +175,7 @@ Three-dimensional scene description requires mainly using a 3D cartesian coordin
 \begin{center} 
 \[ ( x , y , z ) \Leftrightarrow ( x , y , z , w ) \]
 \end{center}
-\\
+
 \vspace{.3cm}
 This coordinate system has wide range of applications, including computer graphics and 3D computer vision, where they allow affine transformations and projective transformations to be easily represented by a matrix
 \\
@@ -187,11 +186,11 @@ This introduces an obvious redundancy, so that the same point in 3D has infinite
 \vspace{.3cm}
 
 \begin{center} 
-\[ (x, y, z, w) \equiv (x_{0}, y_{0}, z_{0}, w_{0})   \Leftrightarrow \alpha \hspace{0.2cm} (x, y, z, w) = (x_{0}, y_{0}, z_{0}, w_{0}) \]
+\[ (x, y, z, w) \equiv (x_{0}, y_{0}, z_{0}, w_{0})   \Leftrightarrow \alpha \hspace{0.2cm} (x, y, z, w) =  (x_{0}, y_{0}, z_{0}, w_{0})  \]
 \end{center}
 
 
-\subsection{Homogenous Matrix}
+\subsection{Homogeneous Matrix}
 
 \noindent The concatenation of a translation with a rotation, scaling or shear requires an awkward combination of a matrix addition and a matrix multiplication. The problem can be avoided by using an alternative coordinate system for which computations are performed by 3 × 3 matrix multiplications. Since 
 
@@ -204,11 +203,12 @@ c & f & 1
   
 \end{center}
 
-To this end a new coordinate system is defined in which the point with Cartesian coordinates $(x , y)$ is represented by the homogeneous or projective coordinates $( x , y , 1 )$, or any multiple $( rx , ry , r )$ with $ r \neq 0 $.
-\\
+To this end a new coordinate system is defined in which the point with Cartesian coordinates $ (x , y) $ is represented by the homogeneous or projective coordinates $( x , y , 1 )$, or any multiple $( rx , ry , r )$ with $ r \neq 0 $.
+
+
 \vspace{.5cm}
-The set of all homogeneous coordinates $(x , y , w)$ is called the \textit{projective plane} and denoted P^2 . In order to carry out transformations using matrix computations the homogeneous coordinates $( x, y, w )$ are represented by the row matrix $(x, y, w)$. 
-\\
+The set of all homogeneous coordinates $(x , y , w)$ is called the \textit{projective plane} and denoted $ P^2 $. In order to carry out transformations using matrix computations the homogeneous coordinates $( x, y, w )$ are represented by the row matrix $(x, y, w)$. 
+
 \vspace{.5cm}
 
 \hspace{1cm} The above equation implies that any planar transformation can be performed by a $ 3 × 3 $ matrix multiplication and using homogeneous coordinates. Sometimes homogeneous coordinates will be denoted by capitals $ (X, Y, W) $  in order to distinguish them from the affine coordinates $(x, y)$.
@@ -217,32 +217,32 @@ The set of all homogeneous coordinates $(x , y , w)$ is called the \textit{proje
 \subsection{Key Aspects}
 \begin{itemize}
   \item 
-  Any point in the projective plane is represented by a triple $ (X, Y, Z) $ , called the \textit{ homogeneous coordinates }  or \textit{ projective coordinates } of the point, where $ X Y$  and $ Z$  are not all $ 0$ .
+  Any point in the projective plane is represented by a triple $ (X,Y,Z) $ , called the\textit{ homogeneous coordinates } or\textit{ projective coordinates }of the point, where$ X Y $ and$ Z $ are not all $ 0 $ .
   \item 
   The point represented by a given set of homogeneous coordinates is unchanged if \textit{  the coordinates are multiplied by a common factor }.
   \item 
   Conversely, two sets of homogeneous coordinates represent the same point if and only if one is obtained from the other by multiplying all the coordinates by the same  \textit{ non-zero constant }.
   \item 
-  When $ Z $  is not $ 0$  the point represented is the point $ (X/Z, Y/Z)$  in the Euclidean plane.
+  When$ Z $ is not $ 0$  the point represented is the point$ (X/Z,Y/Z)$ in the Euclidean plane.
   \item 
-  When $ Z $  is $ 0$  the point represented is a point at $ infinity $ .
+  When$ Z $ is $ 0$  the point represented is a point at $ infinity $ .
 \end{itemize}
 
 \section{Vector Algebra}
 
 
-\hspace{1cm} In mathematics and linear algebra, vector algebra refers to algebraic operations in vector spaces. Most commonly, it refers to operations on Euclidean vectors.
+\hspace{1cm} In mathematics and linear algebra,vector algebra refers to algebraic operations in vector spaces. Most commonly, it refers to operations on Euclidean vectors.
 
 \subsection{Vector Operations}
 
-Vectors in 3D space are usually given by their cartesian coordinates, and operations on vector can be defined in terms of them:
+Vectors in 3D space are usually given by their Cartesian coordinates, and operations on vector can be defined in terms of them:
 
 \indent \textbf{\textit{Addition : }} $ (x, y, z) + (x’ , y’ ,z’) = (x + x’, y + y’, z + z’) $  \\
 \indent \textbf{\textit{Subtraction : }} $(x, y, z) − (x’ , y’ ,z’) = (x – x’ ,y – y’, z – z’)$ \\
 \indent \textbf{\textit{Scaling : }} $ \lambda (x, y, z) = (\lambda x, \lambda y, \lambda z)  $ \\
 \indent \textbf{\textit{Dot Product : }}$ (x, y, z) \cdot (x_{0} , y_{0} ,z_{0} ) = x x_{0} + y y_{0} + z z_{0} $ \\
 \indent \textbf{\textit{Norm : }} $ \| ( x , y , z ) \| = \sqrt{\vert \overrightarrow{v} \cdot \overrightarrow{v} \vert } = \sqrt{x^2 + y^2 + z^2} $ \\
-\indent \textbf{\textit{Cross Product : }} $ (x, y, z ) \times (x_{0} , y_{0} ,z_{0} ) = (yz_{0} − zy_{0} ,zx_{0} − xz_{0} , xy_{0} − yx_{0} ) $ \\
+\indent \textbf{\textit{Cross Product : }} $ (x, y, z ) \times (x_{0} , y_{0} ,z_{0} ) = (y z_{0} − z y_{0} ,z x_{0} − x z_{0} , x y_{0} − y x_{0} ) $ \\
 
 \subsection{Geometric Interpretation}
 
@@ -260,14 +260,15 @@ The component form of the dot product now follows from its properties given abov
 
 \[ \overrightarrow{v} \cdot \overrightarrow{w} = ( v_{x} \widehat{i} + v_{y} \widehat{j}) \cdot ( w_{x} \widehat{i} + w_{y} \widehat{j}) = v_{x}w_{x} + v_{y}w_{y} \] 
 
-\indent \textbf{Orthogonal : } Two vectors are orthogonal if their dot product is zero.  \\
-\indent \textbf{Collinear : } Two vector are collinear if their cross product is zero.  \\
-\indent \textbf{Normal : } A normal vector to the plane defined by \overrightarrow{v}  and  \overrightarrow{w} is given by \overrightarrow{v} \times \overrightarrow{w}  \\
+\indent \textbf{Orthogonal : } Two vectors are orthogonal if their dot product is zero.  
+\indent \textbf{Collinear : } Two vector are collinear if their cross product is zero.  
+\indent \textbf{Normal : } A normal vector to the plane defined by $\overrightarrow{v}  $ and $ \overrightarrow{w}$ is given by  $\overrightarrow{v} \times \overrightarrow{w}  $
 
 \subsection{Direction Cosines}
 
-
+$
 If a directed line \mathcal{L} passing through the origin makes angles \alpha, \beta and \gamma with x, y and z-axes, respectively, called direction angles, then cosine of these angles, namely, cos \alpha, cos \beta and cos \gamma are called direction cosines of the directed line \mathcal{L} . If we reverse the direction of L, then the direction angles are replaced by their supplements, i.e., \pi - \alpha , \pi - \beta and \pi - \gamma . Thus, the signs of the direction cosines are reversed. 
+$
 \vspace{0.3cm}
 Note that a given line in space can be extended in two opposite directions and so it has two sets of direction cosines. In order to have a unique set of direction cosines for a given line in space, we must take the given line as a directed line. These unique direction cosines are denoted by l, m and n. \\
 \vspace{0.5cm}
@@ -283,7 +284,9 @@ Therefore \[ k^2 (a^2 + b^2 + c^2) = 1 \]
 
 \section{Transformations on 3D Objects}
 
-A \textbf{transformation} is a function \f that maps a set \chi to itself, i.e. f: \chi \rightarrow \chi. Examples include rotations, reflections and translations. These can be carried out in Euclidean space, particularly in \mathbb{R}^2 and \mathbb{R}^3. They are also operations that can be described explicitly using matrices.
+$
+A\textbf{transformation}is a function f that maps a set \chi to itself, i.e.f:\chi \rightarrow \chi. Examples include rotations, reflections and translations. These can be carried out in Euclidean space, particularly in\mathbb{R}^2and\mathbb{R}^3. They are also operations that can be described explicitly using matrices.
+$
 
 \subsection{Translation}
 Translation is one of the most basic operations that can be performed on an object. It can be defined as the elementary transformation which can preserve relative positions of any two points in the coordinate space. 
@@ -318,7 +321,7 @@ In general, for the case of the 3D coordinate system the translation is defined 
 
 \subsection{Rotation}
 
-A rotation about the origin through an angle \theta has the effect that a point P(x, y) is mapped to a point $ P’ (x’ , y’) $ so that the initial point P and its image point $ P' $ are the same distance from the origin, and the angle between lines OP and $ OP’ $ is \theta.
+A rotation about the origin through an angle $ \theta$ has the effect that a point P(x, y) is mapped to a point $ P’ (x’ , y’) $ so that the initial point P and its image point $ P' $ are the same distance from the origin, and the angle between lines OP and $ OP’ $ is $ \theta $ .
 \vspace{0.3cm}
 
 \hspace{1cm} Since we have been considering the fact that matrices are important in the study of coordinate geometry involving projections, we must not proceed without getting the glimpse of this transformation in terms of matrices. The Rotation of the coordinate system about the conventional orthogonal axis of rotation and along any axis is specified below.
@@ -330,15 +333,16 @@ It might be quite intriguing to the reader how the rotation of a point about a g
 \end{lemma}
 
 \begin{enumerate}
-  \item Anti-clockwise Rotation about x-axis by an angle \theta.
-  \item Anti-clockwise Rotation about y-axis by an angle \theta. 
-  \item Anti-clockwise Rotation about z-axis by an angle \theta. 
+  \item Anti-clockwise Rotation about x-axis by an angle$ \theta$.
+  \item Anti-clockwise Rotation about y-axis by an angle$ \theta$. 
+  \item Anti-clockwise Rotation about z-axis by an angle$ \theta$. 
 \end{enumerate}
 
 \subsection{General Rotation about any Axis}
 
-In order to get the rotation matrix for rotation about any axis with direction cosines u_{x}, u_{y},u_{z} by an angle \theta is given by
-
+$
+In order to get the rotation matrix for rotation about any axis with direction cosines u_{x}, u_{y},u_{z} by an angle \theta is given by : 
+$
 \[ R =  \begin{bmatrix}
 cos(\theta) + u_{x}^2(1-cos(\theta)) & u_{x}u_{y}(1-cos(\theta)) - u_{z}sin(\theta) &  u_{x}u_{z}(1-cos(\theta)) + u_{y}sin(\theta) \\
 u_{y}u_{z}(1-cos(\theta)) + u_{z}sin(\theta) & cos(\theta) + u_{y}^2(1-cos(\theta)) &  u_{y}u_{z}(1-cos(\theta)) - u_{x}sin(\theta) \\
@@ -388,7 +392,6 @@ cos(\theta) & sin(\theta) \\
 is called the \textit{Rotation Matrix}.\\
 
 
-\\
 The reader must notice that the rotation matrices may have a difference in sign of θ. Because of the direction of rotation that we might decide.\\
 
 \subsection{Scaling}
@@ -465,9 +468,9 @@ Therefore, the direction cosines of the line joining the point$ P $and the point
 Therefore, we must have : 
 \[ \dfrac{x - x_{0}}{a} = \dfrac{y - y_{0}}{b} = \dfrac{z - z_{0}}{c} = \Bbbk \]
 
-Furthermore, the point $P’ $lies on the plane and hence must satisfy the equation of the plane and therefore $ax + by + cz  = d$. Substituting the value of$ x,y,z$ in terms of $ x_{0},y_{0},z_{0}, \Bbbk $from the direction equality equation gives us the value of \Bbbk as
+Furthermore, the point $P’ $lies on the plane and hence must satisfy the equation of the plane and therefore $ax + by + cz  = d$. Substituting the value of$ x,y,z$ in terms of $ x_{0},y_{0},z_{0}, \Bbbk $from the direction equality equation gives us the value of $\Bbbk$ as
 
-\[ \BbbK = \dfrac{- (a x_{0} + b y_{0} + c z_{0} - d)}{ a^2 + b^2 + c^2 } \]
+\[ \BbbK = \dfrac{ -(a x_{0} + b y_{0} + c z_{0} - d)}{ a^2 + b^2 + c^2 } \]
 
 Hence we can calculate the coordinates of point $P’ $by substituting the value of \BbbK in the direction equality equation. \footnote{Note: We shall use the transformation math to view the object from the different angles i.e isometric views.}
 \\
@@ -491,7 +494,7 @@ Now, as discussed before we have an infinite number of points on the 3D object, 
   \label{ingLemma}
   The points that form an edge in the 3D model also form an edge in the projected view provided that both of them are visible in the projection.
 \end{lemma}
-\\
+
 \vspace{0.2cm}
 To project a certain orthographic view, we will use the following technique:
 \\
@@ -528,12 +531,12 @@ Keeping in mind all the assumptions, the analytical and the mathematical model d
 \vspace{0.3cm}
 
 We must see that curved surfaces would require an infinite number of applications of the projection formula to get a proper well defined curved edge to be obtained in the projection view.
-\\
-\vspace{0.2cm}
 
+% \vspace{0.2cm}
+
+
+% \nextpage
 %\bibliography{plain}
-
-\nextpage
 
 \begin{thebibliography}{9}
 
@@ -551,191 +554,3 @@ S. Burr and S. Loo, On Rado numbers II, unpublished.
 
 
 
-
-% \section{Schur numbers}
-
-% \noindent Schur numbers are the least positive number $s=\tt{s(r)}$ such that for every $r$-colouring of first $s$ positive integers or $[1,s]$, we have a monochromatic solution to the equation $x+y=z$.
-
-% \begin{thm} {\bf (I. Schur \cite{IS})}\\[5pt] 
-% For any $ r\ge 1$, there exist a positive integer $\tt{s(r)}$ such that for every $r$ colouring of $[1,\tt{s(r)}]$, we have a monochromatic solution to the equation $ x+y=z$.
-% \end{thm}
-
-% \noindent A triple $\big(x, y, z \big)$ that satisfies the equation $x+y=z$ is called a Schur triple. The only known exact values for Schur numbers are:
-% \[ \tt{s(1)}=2, \quad \tt{s(2)}=5, \quad \tt{s(3)}=14, \quad \tt{s(4)}=45. \]
-
-% \noindent The colouring used in the proof of Schur's Theorem gives a bijection between edge colouring of ${\K}_n$ and colouring of $[n-1]$. The definition of this colouring implies that monochromatic triangles correspond to Schur triples. With $n={\R}_r(3)$, this gives
-% \[ \frac{1}{2}(3^r+1) \le \tt s(r) \le {\R}_r(3)-1 \le 3r!-1. \]
-
-% \noindent Let $L(t)$ represents the equation $x_1+x_2+\ldots+x_{t-1}=x_t$ where $ x_1,x_2, \ldots ,x_t$ are the unknown variables.
-
-% \begin{thm}{\bf (A. Robertson \cite{AR})} \\[5pt]
-% For $r \ge 1$ and, for $1 \le i \le r$, assume that $k_i \ge 3$. Then there exist a least positive integer $S={\S}(k_1, k_2,\ldots,k_r) $, such that for every $r$-colouring of $[1,S]$, we have a monochromatic solution to $L(k_j)$ of colour $j$ where $j \in \{1,2,\ldots,r\}$.
-% \end{thm}
-
-% \noindent The numbers $S={\S}(k_1,k_2,\ldots,k_r)$ are called {\tt generalized Schur numbers}. When $k_1=k_2=\ldots=k_r=k$, we denote it by ${\S}_r(k)$.\\
-
-% \noindent We have a theorem that gives us the exact values for all $2$-coloured generalized Schur numbers.
-
-% \begin{thm}
-% Let $k,\ell \ge 3$. Then
-% \[ {\S}(k;\ell) = \left\{ \begin{array}{ll}
-%                             3\ell-4 & \mbox{for $k=3$ and $\ell$ is odd};\\
-%                             3\ell-5 & \mbox{if $k=3$ and $\ell$ is even};\\
-%                             k\ell-\ell-1 & \mbox{if $4 \leq k \leq \ell$}. 
-%                                   \end{array}
-%                 \right.
-% \]  
-% \end{thm}
-
-% \noindent We have an upper and lower bound for generalized Schur number $\S_r(k)$ too.
-
-% \begin{thm}
-% Let $r \ge 2$. If $k \ge 3$, then $\S_r(k) \le \R_r(k)-1$, i.e., for every $r$-colouring of ${\K}_\R$ we have monochromatic ${\K}_k$ in some colour $j \in\{1,2,\ldots,\R\}$.
-% \end{thm}
-
-% \begin{thm}
-% Let $r \ge 2$. If $ k \ge 3$, then 
-% \[ \S_r(k) \ge \frac{k^{r+1}-2k^r+1}{k-1}. \]
-% \end{thm}
-
-% \noindent Now we will introduce the concept of {\tt regularity}. Let $S$ be a system of linear homogeneous equations. We say that $S$ is $r$-{\tt regular} if, for every $r$-colouring of positive integers, there is a monochromatic solution to $S$. If $S$ is $r$-regular for all $r \ge 1$, then $S$ is said to be {\tt regular}. 
-
-% \section{Rado numbers}
-
-% \begin{thm} {\bf (R. Rado \cite{IS})} \\ [5pt]
-% Let $k \ge 2$. Let $ c_i$ be non zero integers, $1 \le i \le k$, be constants. Then 
-% \[ \sum_{i=1}^k c_ix_i = 0 \] 
-% is regular if and only if there exists a non-empty $D \subseteq \{c_i: 1 \le i \le k\}$ such that $\sum_{d \in D} d=0$.
-% \end{thm}
-
-% \begin{thm} {\bf (R. Rado \cite{IS})} \\ [5pt]
-%  Let $\epsilon (b)$ represent the linear equation
-% \[c_1x_1+c_2x_2+\ldots+c_kx_k=b,\]
-% where $k\ge 2$ and each $c_i$ is a nonzero integer. Let $s=c_1+\ldots+c_k$. Then the equation $\epsilon (b)$ is regular if and only if either 
-% \begin{itemize} 
-% \item[{\rm (i)}]
-% $\frac{b}{s}$ is a positive integer or
-% \item[{\rm (ii)}]
-% $\frac{b}{s}$  is a negative integer and $\epsilon(0)$ is regular.
-% \end{itemize}
-% \end{thm}
-
-% \begin{thm}{\bf (Rado's ``Columns Condition")}\\ [5pt]
-% Let $C=\big(\ora{c_1}, \ldots, \ora{c_n}\big)$ be a $k \times n$ matrix, where $\ora{c_i} \in \Z^k $ for $1 \le i \le n.$ We say that $C$ satisfies the``{\tt \/Columns Condition}" if we can order the columns $\ora{c_i}$ with indices $1=i_0 < i_1 < \ldots <i_s=n$ such that the following two conditions holds for $\ora{s_j}=\sum_{i_{j-1}+1}^{i_j}\ora{c_i}$ for $2 \le j \le t$.
-% \begin{itemize}
-% \item[{\rm (i)}]
-% $\ora{s_1}=\ora 0$;
-% \item[{\rm (ii)}]
-% $\ora{s_j}$ can be expressed as a linear combination of $\ora{c_1}, \ldots, \ora{c_{j-1}}$ for  $2 \le j \le t$.
-% \end{itemize}
-% \end{thm}
-
-% \begin{thm}{\bf (Rado's Theorem for a system of equations)}{\bf (R. Rado, \cite{Rado1,Rado2,Rado3})} \\[5pt]
-% A system of linear homogeneous equations $S$ denoted by $A \ora{x}=0$ is regular if and only if $A$ satisfies the ``{\tt \/Columns Condition}". Moreover $S$ has a monochromatic solution of distinct positive integers if and only if $S$ is regular and there exist distinct (not necessarily monochromatic integers) that satisfy $S$.
-% \end{thm}
-
-% \begin{thm}{\bf  (D. Schaal \cite{DS})} \\[5pt]
-% Let $b \geq 1$, $k \geq 3$, and let $\epsilon(b)$ represent the equation $x_1+\ldots+x_{k-1}-x_k=-b$. Then Rado number ${\tt{r}}(\epsilon(b);2)$ does not exist precisely when $k$ is even and $b$ is odd. Furthermore, we have
-% \[{\tt{r}}(\epsilon(b);2) = k^2+(b-1)(k+1) \]
-% whenever $\tt{r}(\epsilon(b);2)$ exists.
-% \end{thm}
-
-% \begin{thm}{\bf (Burr \& Loo {\cite{BL}})} \\[5pt]
-% For $b \geq 1$, Rado number {\tt{r}}(x+y-z=b;2) is 
-% \[ {\tt{r}}(x+y-z=b;2) = b - \left\lceil \frac{b}{5} \right\rceil + 1. \]
-% \end{thm}
-
-% \noindent Now some known Rado numbers for any given equation and the number of colours used is $2$. 
-
-% \begin{thm}{\bf (Hopkins \& Schaal {\cite{HS}})} \\[5pt]
-% Let $a_1,\ldots,a_{m-1}$ be positive integers, $m \ge 3$. Let $t=\min\{a_1,a_2,\ldots,a_{m-1}\}$ and $b=a_1+a_2+\ldots+a_{m-1}-t$. Then Rado number ${\tt{r}}(a_1x_1+\ldots+a_{m-1}x_{m-1}=x_m;2)$ is
-% \[ {\tt{r}}(a_1x_1+\ldots+a_{m-1}x_{m-1}=x_m;2) \geq tb^2+(2t^2+1)b+t^3. \]
-% Moreover, if $t=2$, 
-% \[ {\tt{r}}(a_1x_1+\ldots+a_{m-1}x_{m-1}=x_m;2) = 2b^2+9b+8. \].
-% \end{thm}
-
-% \begin{thm}{\bf (Burr \& Loo) {\cite{BL}})} \\[5pt]
-% Let $a,b \geq 1$ with $(a,b)=1$. Then Rado number in $2$ colours {\tt{r}}(ax+by=bz;2) is
-% \[ {\tt{r}}(ax+by=bz;2) = \left\{ \begin{array}{ll}
-%                             a^2+3a+1 & \mbox{if $b=1$};\\
-%                             b^2 & \mbox{if $a<b$};\\
-%                             a^2+a+1 & \mbox{if $2 \leq b \leq a$}. 
-%                                         \end{array}
-%                            \right.
-% \]
-% \end{thm}
-
-% \begin{thm}{\bf (Grynkiewicz) {\cite{DJG}})} \\[5pt]
-% Let us consider the equation $x_1+x_2-2x_3=c$ where $c$ is any integer. Now a few restraints on the given equation.
-% \begin{eqnarray*}
-% L_1(c) = & x_1+x_2-2x_3=c, & \\
-% L_2(c) = & x_1+x_2-2x_3=c, & x_i \neq x_j \text{where} i \neq j,\\
-% L_3(c) = & x_1+x_2-2x_3=c, & x_1>x_2>x_3, \\
-% L_4(c) = & x_1+x_2-2x_3=c, & x_3>x_2>x_1, \\
-% L_5(c) = & x_1+x_2-2x_3=c, & x_1>x_3>x_2.
-% \end{eqnarray*}
-% and $S_i(c)$ corresponds to $L_i(c)$. $S_i(c)$ denotes the minimum integer, if it exists, such that for every $2$ colouring from $[S_i(c)]  \rightarrow  \{0,1\}$, we have a monochromatic solution for the given equation and, otherwise $S_i(c)=\infty.$ Then
-% \begin{itemize}
-% \item[{\rm (i)}]
-% For $i \in [5]$ and $c$ odd, $S_i(c)=\infty$.
-% \item[{\rm (ii)}] 
-% For $c$ even, $S_1(c)=|c|+1$.
-% \item[{\rm (iii)}]
-% For $c \geq 10$ and even, $S_3(c)=S_2(c)=c+4$.
-% \item[{\rm (iv)}]
-% For $c \leq -10$ and even, $S_2(c)=S_4(c)=-c+4$.
-% \item[{\rm (v)}]
-% For $c \leq 8$ and even, $S_3(c)=\infty$.
-% \item[{\rm (vi)}]
-% For $c \geq -8$ and even, $S_4(c)=\infty$.
-% \item[{\rm (vii)}]
-% For $c$ even, $S_5(c)=2|c|+10$.
-% \end{itemize}
-% \end{thm}
-
-% \begin{thm} {\bf (Guo \& Sun {\cite{GS}})} \\[5pt]
-% Let $a_1,\ldots,a_m$ be some positive integers and the equation under cosideration is $\sum_{i=1}^m a_ix_i=x_{m+1}$. Then the Rado number ${\tt{r}}(\sum_{i=1}^m a_ix_i=x_{m+1};2)$ is $av^2+v-a$, where $a=\min(a_1,\ldots,a_m)$ and $v=\sum_1^m a_i$. 
-% \end{thm}
-
-% \begin{thm} {\bf (Schaal {\cite{DS}})} \\[5pt]
-% For every integer $m$ and $c$, let ${\tt{r}}(m,c)$ denote the $2$ colour Rado number for the equation $\sum_{i=1}^{m-1} x_i + c=x_m$. If $m$ is odd or $c \geq 0$ and even, then ${\tt{r}}(m,c)=m^2+(c-1)(m+1)$.
-% \end{thm}
-
-% \begin{thm} {\bf (Beutelspacher \& Brestovansky {\cite{BB}})} \\[5pt]
-% For every integer $m$ and $c$, let ${\tt{r}}(m,c)$ denote the $2$ colour Rado number for the equation $\sum_{i=1}^{m-1} x_i + c=x_m$. For $m \geq 3$ and $c=0$, ${\tt{r}}(m,0)=m^2-m-1$.
-% \end{thm}
-
-% \begin{thm} {\bf (Kosek \& Schaal {\cite{KS}})} \\[5pt]
-% For every integer $m \geq 3$ and every integer $c$, let ${\tt{r}}(m,c)$ denote the $2$ colour Rado number for the equation $\sum_{i=1}^{m-1} x_i + c=x_m$. Here $m$ is even or $c$ is odd as ${\tt{r}}(m,c)=\infty$ when $m$ is even and $c$ is odd. Then for $c<0$, we have the following cases
-% \[ {\tt{r}}(m,c) = \left \{ \begin{array}{ll}
-%                                        m^2-(c-1)(m+1) & \mbox{when $-m+2<c<0$}; \\
-%                                        2 & \mbox{when $c=-2(m-2)$};\\
-%                                        3 & \mbox{when $c=-2(m-2)-1$};\\
-%                                        j(m-1)+c & \mbox{where $-j(m-2) \leq c \leq -(j-1)(m-1)$,} \\
-%                                                 & \mbox{$j=3,\ldots,m-1$};\\
-%                                        \big \lceil {\frac {1-(m+1)c}{m^2-m-1}} \big \rceil & \mbox{when $c<-(m-1)(m-2)$}.
-%                                      \end{array}
-%                         \right. 
-% \]
-% Moreover ${\tt{r}}(m,c) \leq m$ when $-2(m-2)+1 \leq c \leq -m+2$.
-
-% \end{thm}
-
-% \begin{thm}{\bf (Gupta, Thulasirangan \& Tripathi {\cite{GTT}})} \\[5pt]
-% For the equation of the form $ax+by=(a+b)z$ where $a$ and $b$ are integers, Rado number ${\tt{r}}(ax+by=(a+b)z;2)$ is given by
-% \[ {\tt{r}}(ax+by=(a+b)z;2) = \left\{ \begin{array}{ll}
-%                             4(a+b)-1 & \mbox{if $a=1$ or $4\mid b$ or $(a,b)=(3,4)$};\\
-%                             4(a+b)+1& \mbox{otherwise}.
-%                                       \end{array}                                  
-%                              \right.
-% \]
-% \end{thm}
-
-% \begin{thm} {\bf (Burr \& Loo {\cite{BL}})} \\[5pt]
-% For $a\geq 1$, 
-% \[ {\tt {r}} (ax+ay=z;2) = a(4a^2+1). \]
-% \end{thm}
-
-% %\section{Proposed Research Work}
-
-% %\noindent A linear equation of the form $\Sigma_1^{j-1}a_ix_i=a_jx_j$ is regular if it satisfies Rado's theorem. This gives us a %general idea what sort of coefficients should be there in order to have a well defined Rado number corresponding to a given equation %and for all values of $r$. One thing that we would like to work on is an equation with three variables i.e. $a_1x_1+a_2x_2=a_3x_3$ %where $a_1+a_2=a_3$. It is regular and has been calculated for $2$ colours. One can always work with $3$ colours and work on it's %Rado number. Other thing would be to generalize the case i.e. $\Sigma_1^{j-1} a_i=a_j$ with $2$ colours and improve the existing %bounds and if possible get an exact value. %There has been a lot work done in this particular field of Ramsey Theory.Since Rado's %theorem gives us a general idea about any %linear homogeneous equation, a lot of people focus on a particular equation and work upon %it.In the best case scenario, exact value %is determined otherwise bounds gives us an idea about that particular Rado number.It's a %hard enough problem.Exact value of Rado %numbers is known for a very few equations. We are going to work on Rado number for some %general equation and hopefully get some %better results than the existing one or an exact value for that particular equation.
