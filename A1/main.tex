@@ -131,6 +131,7 @@ As a matter of interest, we just wish to argue that these things can be computed
 \chapter{Introduction}
 
 In the last ten years, a significant progress occurred in the area of 3D graphics. Many studies have been conducted in the field of 3D modeling, and a variety of methods that allow us to reconstruct 2D images into 3D were created. Today, 3D graphics industry creates models that can no longer be distinguished from a person in the real world or on photograph. This way of modeling is also the goal of this work; to explore options to create a photo-realistic 3D model shaped from the 2D images. This article has listed and briefly described methods of converting 2D images into 3D models.
+
 \vspace{1cm}
 
 The following objectives are aimed to be covered in this paper:
@@ -260,20 +261,21 @@ The component form of the dot product now follows from its properties given abov
 
 \[ \overrightarrow{v} \cdot \overrightarrow{w} = ( v_{x} \widehat{i} + v_{y} \widehat{j}) \cdot ( w_{x} \widehat{i} + w_{y} \widehat{j}) = v_{x}w_{x} + v_{y}w_{y} \] 
 
-\indent \textbf{Orthogonal : } Two vectors are orthogonal if their dot product is zero.  
-\indent \textbf{Collinear : } Two vector are collinear if their cross product is zero.  
-\indent \textbf{Normal : } A normal vector to the plane defined by $\overrightarrow{v}  $ and $ \overrightarrow{w}$ is given by  $\overrightarrow{v} \times \overrightarrow{w}  $
+\indent \textbf{Orthogonal : } Two vectors are orthogonal if their dot product is zero.  \\
+\indent \textbf{Collinear : } Two vector are collinear if their cross product is zero.  \\
+\indent \textbf{Normal : } A normal vector to the plane defined by\\
+$\overrightarrow{v}  $ and $ \overrightarrow{w}$ is given by  $\overrightarrow{v} \times \overrightarrow{w}  $
 
 \subsection{Direction Cosines}
 
-$
-If a directed line \mathcal{L} passing through the origin makes angles \alpha, \beta and \gamma with x, y and z-axes, respectively, called direction angles, then cosine of these angles, namely, cos \alpha, cos \beta and cos \gamma are called direction cosines of the directed line \mathcal{L} . If we reverse the direction of L, then the direction angles are replaced by their supplements, i.e., \pi - \alpha , \pi - \beta and \pi - \gamma . Thus, the signs of the direction cosines are reversed. 
-$
+
+If a directed line $\mathcal{L}$ passing through the origin makes angles $\alpha, \beta and \gamma$ with x, y and z-axes, respectively, called direction angles, then cosine of these angles, namely, $cos \alpha, cos \beta $and$ cos \gamma$ are called direction cosines of the directed line $\mathcal{L}$ . If we reverse the direction of L, then the direction angles are replaced by their supplements, i.e.,$ \pi - \alpha , \pi - \beta$ and $\pi - \gamma$ . Thus, the signs of the direction cosines are reversed. 
+
 \vspace{0.3cm}
 Note that a given line in space can be extended in two opposite directions and so it has two sets of direction cosines. In order to have a unique set of direction cosines for a given line in space, we must take the given line as a directed line. These unique direction cosines are denoted by l, m and n. \\
 \vspace{0.5cm}
 
-Let a,b,c be the direction ratios of a line and let l , m and n be the direction cosines \textit{(d.c's)} of the line. Then,
+Let a,b,c be the direction ratios of a line and let l , m and n be the  \textit{direction cosines} of the line. Then,
 
 \[ \dfrac{l}{a} = \dfrac{m}{b} = \dfrac{n}{c} = k (constant) \]
 Therefore \[ l = ak, m = bk , n = ck \]
@@ -284,9 +286,8 @@ Therefore \[ k^2 (a^2 + b^2 + c^2) = 1 \]
 
 \section{Transformations on 3D Objects}
 
-$
-A\textbf{transformation}is a function f that maps a set \chi to itself, i.e.f:\chi \rightarrow \chi. Examples include rotations, reflections and translations. These can be carried out in Euclidean space, particularly in\mathbb{R}^2and\mathbb{R}^3. They are also operations that can be described explicitly using matrices.
-$
+
+A\textbf{transformation}is a function f that maps a set $\chi$ to itself, i.e.   f:$\chi \rightarrow \chi$. Examples include rotations, reflections and translations. These can be carried out in Euclidean space, particularly in $\mathbb{R}^2 $and $\mathbb{R}^3$ . They are also operations that can be described explicitly using matrices.
 
 \subsection{Translation}
 Translation is one of the most basic operations that can be performed on an object. It can be defined as the elementary transformation which can preserve relative positions of any two points in the coordinate space. 
@@ -333,16 +334,16 @@ It might be quite intriguing to the reader how the rotation of a point about a g
 \end{lemma}
 
 \begin{enumerate}
-  \item Anti-clockwise Rotation about x-axis by an angle$ \theta$.
-  \item Anti-clockwise Rotation about y-axis by an angle$ \theta$. 
-  \item Anti-clockwise Rotation about z-axis by an angle$ \theta$. 
+  \item Anti-clockwise Rotation about x-axis by an angle $\theta$.
+  \item Anti-clockwise Rotation about y-axis by an angle $\theta$. 
+  \item Anti-clockwise Rotation about z-axis by an angle $\theta$. 
 \end{enumerate}
 
 \subsection{General Rotation about any Axis}
 
-$
-In order to get the rotation matrix for rotation about any axis with direction cosines u_{x}, u_{y},u_{z} by an angle \theta is given by : 
-$
+
+In order to get the rotation matrix for rotation about any axis with direction cosines $ u_{x}, u_{y},u_{z}  $ by an angle $\theta$ is given by : 
+
 \[ R =  \begin{bmatrix}
 cos(\theta) + u_{x}^2(1-cos(\theta)) & u_{x}u_{y}(1-cos(\theta)) - u_{z}sin(\theta) &  u_{x}u_{z}(1-cos(\theta)) + u_{y}sin(\theta) \\
 u_{y}u_{z}(1-cos(\theta)) + u_{z}sin(\theta) & cos(\theta) + u_{y}^2(1-cos(\theta)) &  u_{y}u_{z}(1-cos(\theta)) - u_{x}sin(\theta) \\
@@ -470,9 +471,9 @@ Therefore, we must have :
 
 Furthermore, the point $P’ $lies on the plane and hence must satisfy the equation of the plane and therefore $ax + by + cz  = d$. Substituting the value of$ x,y,z$ in terms of $ x_{0},y_{0},z_{0}, \Bbbk $from the direction equality equation gives us the value of $\Bbbk$ as
 
-\[ \BbbK = \dfrac{ -(a x_{0} + b y_{0} + c z_{0} - d)}{ a^2 + b^2 + c^2 } \]
+\[ \Bbbk = \dfrac{ -(a x_{0} + b y_{0} + c z_{0} - d)}{ a^2 + b^2 + c^2 } \]
 
-Hence we can calculate the coordinates of point $P’ $by substituting the value of \BbbK in the direction equality equation. \footnote{Note: We shall use the transformation math to view the object from the different angles i.e isometric views.}
+Hence we can calculate the coordinates of point $P’ $by substituting the value of $\Bbbk$ in the direction equality equation. \footnote{Note: We shall use the transformation math to view the object from the different angles i.e isometric views.}
 \\
 
 \subsection{Key Aspects}
