@@ -8,6 +8,8 @@
 \usepackage{multicol}
 \usepackage[document]{ragged2e}
 
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist 
 
 \def\w{\mathtt w}
 \def\K{\mathcal K}
@@ -18,9 +20,12 @@
 \def\Z{\mathbb Z}
 \def\ora{\overrightarrow}
 
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
+
+
 \begin{document}
 
 \begin{center}
@@ -343,12 +348,15 @@ It might be quite intriguing to the reader how the rotation of a point about a g
 
 
 In order to get the rotation matrix for rotation about any axis with direction cosines $ u_{x}, u_{y},u_{z}  $ by an angle $\theta$ is given by : 
-
+\begin{changemargin}{-1.2cm}{0cm} 
+%your text here  
 \[ R =  \begin{bmatrix}
 cos(\theta) + u_{x}^2(1-cos(\theta)) & u_{x}u_{y}(1-cos(\theta)) - u_{z}sin(\theta) &  u_{x}u_{z}(1-cos(\theta)) + u_{y}sin(\theta) \\
 u_{y}u_{z}(1-cos(\theta)) + u_{z}sin(\theta) & cos(\theta) + u_{y}^2(1-cos(\theta)) &  u_{y}u_{z}(1-cos(\theta)) - u_{x}sin(\theta) \\
 u_{z}u_{x}(1-cos(\theta)) - u_{y}sin(\theta) & u_{z}u_{y}(1-cos(\theta)) + u_{x}sin(\theta) & cos(\theta) + u_{z}^2(1-cos(\theta)) 
+\hspace{1cm}
 \end{bmatrix}\]
+\end{changemargin}
 
 \subsection{A simple derivation for the case of 2D view}
 
