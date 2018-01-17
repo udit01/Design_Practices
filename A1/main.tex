@@ -241,9 +241,14 @@ Vectors in 3D space are usually given by their cartesian coordinates, and operat
 \indent \textbf{\textit{Subtraction : }} $(x, y, z) − (x’ , y’ ,z’) = (x – x’ ,y – y’, z – z’)$ \\
 \indent \textbf{\textit{Scaling : }} $ \lambda (x, y, z) = (\lambda x, \lambda y, \lambda z)  $ \\
 \indent \textbf{\textit{Dot Product : }}$ (x, y, z) \cdot (x_{0} , y_{0} ,z_{0} ) = x x_{0} + y y_{0} + z z_{0} $ \\
-\indent \textbf{\textit{Norm : }} $ \| ( x , y , z ) \| = \sqrt{ \overrightarrow{v} \cdot \overrightarrow{v} } = \sqrt{x^2 + y^2 + z^2} $ \\
+\indent \textbf{\textit{Norm : }} $ \| ( x , y , z ) \| = \sqrt{\vert \overrightarrow{v} \cdot \overrightarrow{v} \vert } = \sqrt{x^2 + y^2 + z^2} $ \\
 \indent \textbf{\textit{Cross Product : }} $ (x, y, z ) \times (x_{0} , y_{0} ,z_{0} ) = (yz_{0} − zy_{0} ,zx_{0} − xz_{0} , xy_{0} − yx_{0} ) $ \\
 
+\subsection{Geometric Interpretation}
+
+The dot product is fundamentally a projection. The dot product of a vector with a unit vector is the projection of that vector in the direction given by the unit vector. This is given by the formula:
+
+\[ \overrightarrow{v} \cdot \overrightarrow{w} = \vert \overrightarrow{v} \vert \vert \overrightarrow{w} \vert  cos (\theta) \]
 
 \chapter{Assumptions}
 
