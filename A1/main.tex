@@ -8,6 +8,9 @@
 \usepackage{multicol}
 \usepackage[document]{ragged2e}
 
+\usepackage{fancyhdr}
+
+
 \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 \let\endchangemargin=\endlist 
 
@@ -39,7 +42,6 @@
 
 \large{\textbf{Design and Implement a Software }}
 \large{\textbf{\\for Engineering Drawing}}\\[5pt]
-
 
 
 %\vspace{1in}
@@ -177,23 +179,42 @@ Three-dimensional scene description requires mainly using a 3D Cartesian coordin
 
 
 \subsection{Introduction}
+% \begin{center} 
+  \[ ( x , y , z ) \Leftrightarrow ( x , y , z , w ) \]
 
-\begin{center} 
-\[ ( x , y , z ) \Leftrightarrow ( x , y , z , w ) \]
-\end{center}
-
+% \end{center}
 \vspace{.3cm}
 This coordinate system has wide range of applications, including computer graphics and 3D computer vision, where they allow affine transformations and projective transformations to be easily represented by a matrix
+
+
+\begin{multicols*}{2}
+
+% \begin{flushleft}
+\begin{center}
+  \includegraphics[height=5cm]{homoGcoord1.eps}
+\end{center}
+
+
+% \end{flushleft}
+
+\columnbreak
+
+\begin{center}
+  \includegraphics[height=5cm]{ch1intro.eps}
+\end{center}
+
+\end{multicols*}
+
+
+
 \\
 \vspace{.3cm}
 
 This introduces an obvious redundancy, so that the same point in 3D has infinitely many homogeneous coordinates, according to the equivalence
 \\
-\vspace{.3cm}
 
-\begin{center} 
+
 \[ (x, y, z, w) \equiv (x_{0}, y_{0}, z_{0}, w_{0})   \Leftrightarrow \alpha \hspace{0.2cm} (x, y, z, w) =  (x_{0}, y_{0}, z_{0}, w_{0})  \]
-\end{center}
 
 
 \subsection{Homogeneous Matrix}
@@ -243,12 +264,14 @@ The set of all homogeneous coordinates $(x , y , w)$ is called the \textit{proje
 
 Vectors in 3D space are usually given by their Cartesian coordinates, and operations on vector can be defined in terms of them:
 
+\vspace{0.3cm}
+
 \indent \textbf{\textit{Addition : }} $ (x, y, z) + (x’ , y’ ,z’) = (x + x’, y + y’, z + z’) $  \\
-\indent \textbf{\textit{Subtraction : }} $(x, y, z) − (x’ , y’ ,z’) = (x – x’ ,y – y’, z – z’)$ \\
+\indent \textbf{\textit{Subtraction : }} $(x, y, z) - (x’ , y’ ,z’) = (x - x’ ,y - y’, z - z’)$ \\
 \indent \textbf{\textit{Scaling : }} $ \lambda (x, y, z) = (\lambda x, \lambda y, \lambda z)  $ \\
 \indent \textbf{\textit{Dot Product : }}$ (x, y, z) \cdot (x_{0} , y_{0} ,z_{0} ) = x x_{0} + y y_{0} + z z_{0} $ \\
 \indent \textbf{\textit{Norm : }} $ \| ( x , y , z ) \| = \sqrt{\vert \overrightarrow{v} \cdot \overrightarrow{v} \vert } = \sqrt{x^2 + y^2 + z^2} $ \\
-\indent \textbf{\textit{Cross Product : }} $ (x, y, z ) \times (x_{0} , y_{0} ,z_{0} ) = (y z_{0} − z y_{0} ,z x_{0} − x z_{0} , x y_{0} − y x_{0} ) $ \\
+\indent \textbf{\textit{Cross Product : }} $ ( x , y , z ) \times (x_{0} , y_{0} ,z_{0} ) = (yz_{0} - zy_{0} ,zx_{0} - xz_{0} , xy_{0} - yx_{0} ) $ \\
 
 \subsection{Geometric Interpretation}
 
@@ -268,8 +291,13 @@ The component form of the dot product now follows from its properties given abov
 
 \indent \textbf{Orthogonal : } Two vectors are orthogonal if their dot product is zero.  \\
 \indent \textbf{Collinear : } Two vector are collinear if their cross product is zero.  \\
-\indent \textbf{Normal : } A normal vector to the plane defined by\\
+\indent \textbf{Normal : } A normal vector to the plane defined by 
 $\overrightarrow{v}  $ and $ \overrightarrow{w}$ is given by  $\overrightarrow{v} \times \overrightarrow{w}  $
+\\
+
+\begin{center}
+  \includegraphics[height=5cm]{vectorOpn.eps}
+\end{center}
 
 \subsection{Direction Cosines}
 
@@ -299,7 +327,12 @@ Translation is one of the most basic operations that can be performed on an obje
 \vspace{0.3cm}
 \\
 A translation is a transformation which maps a point P (x, y) to a point $ P' (x’ , y’) $by adding a constant amount to each coordinate so that 
-\[ x' = x + h, y' = y + k \] for some constants h and k.
+\[ x' = x + h, y' = y + k \] for some constants h and k.\\
+
+\begin{center}
+  \includegraphics[height=5cm]{translation.eps}
+\end{center}
+\\
 
 \[ R_{x}(\theta) = \begin{bmatrix}
 1 & 0 & 0 \\
@@ -377,11 +410,12 @@ The matrix
 s_{x} & 0 \\
 0 & s_{y}
 \end{pmatrix}  \]
+
 \begin{center}
   is called the \textit{scaling transformation matrix.}
-
-  An Image will come Here(cropped?)
-  \vspace{4cm}
+  \includegraphics[height=5cm]{scalingCh1.eps}
+  % An Image will come Here(cropped?)
+  % \vspace{4cm}
 \end{center}
 
 The coordinates$ (x’ , y’ ) $can be obtained from$ (x, y) $by the matrix multiplication
@@ -411,6 +445,7 @@ Scaling is a linear transformation that enlarges or shrinks an object by scale f
 A scaling about the origin is a transformation which maps a point$ P(x, y) $to a point$ P’ (x’ , y’ ) $by multiplying the x and y coordinates by non-zero constant scaling factors sx and sy, respectively, to give $ x’ = S_{x} X and y’ = S_{y} Y$ .
 \vspace{0.3cm}
 \\
+
 Scaling is not as such a very useful tool to change the view angle or just change the position of the object but enables us to change its size (as seen by us) with a given viewing screen or better say field of view.
 
 \section{Tools for Projection/Reconstruction}
@@ -423,13 +458,15 @@ The powerful theory described above will be used to prove more results that we w
 \section{Introduction}
 
 In this Chapter, we shall describe a mathematical model to get the projection of a 3D Model onto any plane of projection that the software user wishes to choose. We will exploit the lemmas and the basics of theory that we studied in Chapter 1 and derive new results and then combine them all to lay our model of 3D – 2D projection. The whole theory will mostly work around matrices that we have studied but may be in a slightly different way, but understandable. \\
-
-Image below \vspace{4cm}
 \\
+% Image below \vspace{4cm}
+
+
+\begin{center}
+  \includegraphics[height=5cm]{3dto2dintro.eps}
+\end{center}
 
 \hspace{1cm} The idea basically consists of projecting the points that are a part of our object on the plane of interest/projection. Now, it is wise to think that there are an infinite number of points present in the object and it is unrealistic to fin the projection of every point. So, out model must involve some assumptions which have been listed in the next section.\\
-
-
 
 
 
@@ -495,6 +532,7 @@ Now, as discussed before we have an infinite number of points on the 3D object, 
 \begin{theorem}
   The projection of the line on a plane is the line joining the projection of the points that lie on the original line
 \end{theorem}
+
 \begin{proof}
   There are two points on a line whose projection is taken on a plane. Now, the projection of a line on a plane must be a line which can be uniquely identified by two points. Also, the projected line must pass through the two points of projection and hence the projection of the line on a plane is the line joining the projection of the points that lie on the original line.
 \end{proof}
@@ -524,11 +562,16 @@ To project a certain orthographic view, we will use the following technique:
 \end{enumerate}
 
 
-\textbf{Example}[4pt]
+\textbf{Example}
 
 This can be illustrated for the following case of a triangular prism:\\
-Image below\\
-\vspace{6cm}
+% Image below\\
+% \vspace{6cm}
+
+
+\begin{center}
+  \includegraphics[height=5cm]{3dto2dExample.eps}
+\end{center}
 
 The front four points can be seen from the viewing direction and hence we mark them. Then we draw solid edges between those points which also have a solid edge between them in the prism. We therefore get	Figure (i). Then the two point at the back are joined by hidden lines to all the other points that they are connected to in such a way that the hidden line does not overlap with a solid line. We therefore get Figure (ii) which is required and correct orthographic projection.
 \\
