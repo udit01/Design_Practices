@@ -17,6 +17,14 @@
 %\selectlanguage{english} %%% remove comment delimiter ('%') and select language if required
 
 
+\noindent Normal.dotm
+
+\noindent 
+
+\noindent 
+
+\noindent 
+
 \noindent \textbf{Indian Institute of Technology, Delhi}
 
 \noindent Design Practices in Computer Science
@@ -35,7 +43,7 @@
 
 \noindent 
 
-\noindent \includegraphics*[width=1.69in, height=1.80in, keepaspectratio=false]{image5}
+\noindent \includegraphics*[width=1.68in, height=1.79in, keepaspectratio=false]{image1}
 
 \noindent 
 
@@ -111,11 +119,21 @@
 
 \noindent 
 
+\noindent 
+
+\noindent 
+
+\noindent 
+
+\noindent 
+
+\noindent 
+
 \noindent \textbf{Introduction}
 
 \noindent 
 
-\noindent In the last ten years, a significant progress occurred in the area of 3D graphics. Many studies have been conducted in the field of 3D modelling, and a variety of methods that allow us to reconstruct 2D images into 3D were created. Today, 3D graphics industry creates models that can no longer be distinguished from a person in the real world or on photograph. This way of modelling is also the goal of this work; to explore options to create a photorealistic 3D model shaped from the 2D images. This article has listed and briefly described methods of converting 2D images into 3D models.
+\noindent \textit{``In the last ten years, a significant progress occurred in the area of 3D graphics. Many studies have been conducted in the field of 3D modelling, and a variety of methods that allow us to reconstruct 2D images into 3D were created. Today, 3D graphics industry creates models that can no longer be distinguished from a person in the real world or on photograph. This way of modelling is also the goal of this work; to explore options to create a photorealistic 3D model shaped from the 2D images. This article has listed and briefly described methods of converting 2D images into 3D models.''}
 
 \noindent 
 
@@ -151,25 +169,33 @@
 
 \noindent 
 
+\noindent 
+
+\noindent 
+
+\noindent 
+
+\noindent 
+
 \noindent \textbf{Chapter 1}
 
 \noindent \textbf{Vector Algebra and 3D Transformation}
 
 \noindent \textbf{}
 
-\noindent \textbf{1    Homogenous coordinate System}
+\noindent \textbf{1.1    Homogenous coordinate System}
 
 \noindent Three-dimensional scene description requires mainly using a 3D cartesian coordinate system. Points in space are uniquely determined by their three \textit{cartesian coordinates} \textit{(x, y, z).}
 
 \noindent Of greater importance for computer graphics is the usage of \textit{homogeneous or projective coordinates}. Ordinary points in space are given four coordinates instead of three:
 
-\noindent \textbf{1.1 Introduction}
+\noindent \textbf{1.1.1    Introduction}
 
                    (\textit{x, y, z})\textit{ }$\mathrm{\Leftrightarrow }$\textbf{ }(\textit{x, y, z, w})\textit{  }
 
-\noindent \includegraphics*[width=2.81in, height=2.72in, keepaspectratio=false]{image6}
+\noindent \includegraphics*[width=2.87in, height=2.87in, keepaspectratio=false]{image2}\includegraphics*[width=2.81in, height=2.72in, keepaspectratio=false]{image3}
 
-\noindent \includegraphics*[width=2.87in, height=2.87in, keepaspectratio=false]{image7}
+\noindent 
 
 \noindent 
 
@@ -191,21 +217,17 @@
 
 (\textit{x, y, z, w}) $\mathrm{\equiv}$ (\textit{x${}_{0}$, y${}_{0}$, z${}_{0,}$ w${}_{0}$}) $\mathrm{\Leftrightarrow }$ \textit{$\alpha$} (\textit{x, y, z, w}) = (\textit{x${}_{0}$, y${}_{0}$, z${}_{0}$, w${}_{0}$}) 
 
-\noindent for some \textit{$\alpha$} $\mathrm{\neq}$ 0 so that proportional 4-tuples denote the same point.
+for some \textit{$\alpha$} $\mathrm{\neq}$ 0 so that proportional 4-tuples denote the same point.
 
-\noindent \textbf{1.2 Homogenous Matrix}
+\noindent \textbf{1.1.2    Homogenous Matrix}
 
 \noindent The concatenation of a translation with a rotation, scaling or shear requires an awkward combination of a matrix addition and a matrix multiplication. The problem can be avoided by using an alternative coordinate system for which computations are performed by 3 $\times$ 3 matrix multiplications. Since 
 
-\noindent 
-
-    ( x\textit{'  y'  1 })    =    ( \textit{x  y  1} )$\ \ \ \ \left( \begin{array}{ccc}
+    ( x\textit{'  y'  1 })    =    ( \textit{x  y  1} )$\mathrm{\ }     \left( \begin{array}{ccc}
 \ \ a & d & 0\ \  \\ 
 \ \ b & e & 0\ \  \\ 
 \ \ c & f & 1\ \  \end{array}
 \right)$
-
-\noindent 
 
 \noindent To this end a new coordinate system is defined in which the point with Cartesian coordinates (x, y) is represented by the homogeneous or projective coordinates (x, y, 1), or any multiple (\textit{rx, ry, r}) with r $\mathrm{\neq}$ 0.
 
@@ -215,7 +237,7 @@ The above equation implies that any planar transformation can be performed by a 
 
 
 
-\noindent \textbf{1.3 Key Aspects}
+\noindent \textbf{1.1.3    Key Aspects}
 
 \begin{enumerate}
 \item \textbf{ }Any point in the projective plane is represented by a triple~(\textit{X},~\textit{Y},~\textit{Z}), called the~\textit{homogeneous coordinates}~or~\textit{projective coordinates}~of the point, where~\textit{X},~\textit{Y}~and~\textit{Z}~are not all 0.
@@ -233,12 +255,232 @@ The above equation implies that any planar transformation can be performed by a 
 
 \noindent Note that the triple~(\textit{0, 0, 0})~is omitted and does not represent any point. The origin is represented by~(\textit{0, 0, 1}).
 
+\noindent 
+
+\noindent \textbf{1.2    Vector Algebra }
+
+In mathematics and~linear algebra,~vector algebra refers to~algebraic~operations in~vector~spaces. Most commonly, it refers to operations on Euclidean vectors.
+
+\noindent 
+
+\noindent \textbf{1.2.1    Vector Operations}
+
+\noindent Vectors in 3D space are usually given by their cartesian coordinates, and operations on vector can be defined in terms of them:
+
+\noindent 
+
+\noindent \textbf{\textit{Addition:}} (x, y, z) + (x' , y' ,z') = (x + x', y + y', z + z') 
+
+\noindent \textbf{\textit{Subtraction:}} (x, y, z) $\mathrm{-}$ (x' , y' ,z') = (x -- x' ,y -- y', z -- z') 
+
+\noindent \textbf{\textit{Scaling:}} $\lambdaup$(x, y, z) = ($\lambdaup$x, $\lambdaup$y, $\lambdaup$z) 
+
+\noindent \textbf{\textit{Dot Product:}} (x, y,z) � (x 0 , y 0 ,z 0 ) = x x 0 + yy 0 + zz 0 
+
+\noindent \textbf{\textit{Norm:}} {\textbar}{\textbar} (x, y, z) {\textbar}{\textbar} = $\mathrm{\sqrt{}}$ v � v = p x 2 + y 2 + z 2 
+
+\noindent \textbf{\textit{Cross Product:}} (x, y,z) $\mathrm{\wedge }$ (x 0 , y 0 ,z 0 ) = (yz 0 $\mathrm{-}$ zy 0 ,zx 0 $\mathrm{-}$ xz 0 , x y 0 $\mathrm{-}$ yx 0 )
+
 \noindent \textbf{}
 
-\noindent \textbf{1    Assumptions}
+\noindent \textbf{1.2.2    Geometric Interpretation}
+
+\noindent The dot product is fundamentally a projection. The dot product of a vector with a unit vector is the projection of that vector in the direction given by the unit vector. This is given by the formula:
+
+\noindent \includegraphics*[width=2.18in, height=2.17in, keepaspectratio=false]{image4}\textbf{    }v � w = {\textbar}v{\textbar} {\textbar}w{\textbar} cos ($\thetaup$)
+
+\noindent Furthermore, it follows immediately from the geometric definition that two vectors are orthogonal if and only if their dot product vanishes, that is 
+
+v $\mathrm{\bot }$ w $\mathrm{\Leftarrow }$$\mathrm{\Rightarrow }$ v � w = 0
+
+\noindent The component form of the dot product now follows from its properties given above. For example, 
+
+\noindent 
+
+\noindent  v � w = (vx i + vy j) � (wx i + wy j) = vxwx i � i + vywy j.i + vxwy i � j + vywx j.j  = vxwx + vywy
+
+\noindent 
+
+\noindent \textbf{Orthogonal: }Two vectors are orthogonal if their dot product is zero.
+
+\noindent \textbf{Collinear: }Two vector are collinear if their cross product is zero.
+
+\noindent \textbf{Normal: }A normal vector to the plane defined by v and w is given by v $\times$ w
+
+\noindent 
+
+\noindent \textbf{1.2.3    Direction Cosines}
+
+\noindent If a directed line L passing through the origin makes angles $\alphaup$, $\betaup$ and $\gammaup$ with x, y and z-axes, respectively, called direction angles, then cosine of these angles, namely, cos $\alphaup$, cos $\betaup$ and cos $\gammaup$ are called direction cosines of the directed line L. If we reverse the direction of L, then the direction angles are replaced by their supplements, i.e., $\piup$ - alpha , $\piup$ - Beta and $\piup$ - gamma . Thus, the signs of the direction cosines are reversed. 
+
+\noindent 
+
+\noindent \includegraphics*[width=6.25in, height=2.53in, keepaspectratio=false]{image5}Note that a given line in space can be extended in two opposite directions and so it has two sets of direction cosines. In order to have a unique set of direction cosines for a given line in space, we must take the given line as a directed line. These unique direction cosines are denoted by l, m and n.
+
+\noindent \textbf{}
+
+\noindent \textbf{1.3    Transformations on 3D Objects}
+
+\noindent A~\textbf{transformation}~is a~function~\textit{f}~that maps a~set~\textit{X}~to itself, i.e.~\textbf{\textit{f}:~\textit{X}~$\boldsymbol{\mathrm{\to}}$~\textit{X.}}\textit{ }Examples include~rotations,~reflections~and~translations. These can be carried out in~Euclidean space, particularly in~\textbf{R}${}^{2}$~and~\textbf{R}${}^{3}$. They are also operations that can be described explicitly using~matrices.
+
+\noindent \textbf{}
+
+\noindent \textbf{1.3.1    Translation}
+
+\noindent Translation is one of the most basic operations that can be performed on an object. It can be defined as the elementary transformation which can preserve relative positions of any two points in the coordinate space. 
+
+\noindent \includegraphics*[width=1.91in, height=1.91in, keepaspectratio=false]{image6}A translation is a transformation which maps a point P (x, y) to a point P' (x' , y') by adding a constant amount to each coordinate so that 
+
+\noindent 
+
+x' = x + h, y' = y + k 
+
+\noindent             for some constants h and k.
+
+ x' = x + h y' = y + k z' = z + l 
+
+     for some constants h, k and l.
+
+\noindent 
+
+\noindent In general, for the case of the 3D coordinate system the translation is defined by the following rules:
+
+\noindent \textbf{1.3.2    Rotation}
+
+\noindent A rotation about the origin through an angle $\thetaup$ has the effect that a point P(x, y) is mapped to a point P' (x' , y') so that the initial point P and its image point P' are the same distance from the origin, and the angle between lines OP and OP' is $\thetaup$.
+
+Since we have been considering the fact that matrices are important in the study of coordinate geometry involving projections, we must not proceed without getting the glimpse of this transformation in terms of matrices. The Rotation of the coordinate system about the conventional orthogonal axis of rotation and along any axis is specified below.
+
+\noindent It might be quite intriguing to the reader how the rotation of a point about a given axis can actually be synced or thought about to be multiplication with a matrix. 
+
+\noindent \textbf{Lemma : }\textit{Multiplication of a matrix, having a unit determinant and transpose same as its inverse, with any point vector in the coordinate space essentially amounts to its rotation around a fixed axis and by a fixed angle}
+
+\noindent \includegraphics*[width=2.53in, height=2.97in, keepaspectratio=false]{image7}
 
 \begin{enumerate}
-\item \textbf{ }The given Object shall consist of \textit{only straight lines }with well defined end points and \textit{no curved surfaces}. The same shall be assumed for the Object whose projections shall be given to us
+\item  Anti-clockwise Rotation about x-axis by an angle $\thetaup$. 
+\end{enumerate}
+
+\noindent \textbf{}
+
+\begin{enumerate}
+\item \textbf{ }Anti-clockwise Rotation about y-axis by an angle $\thetaup$. 
+\end{enumerate}
+
+\noindent \textbf{}
+
+\noindent \textbf{}
+
+\begin{enumerate}
+\item \textbf{ }Anti-clockwise Rotation about z-axis by an angle $\thetaup$. 
+\end{enumerate}
+
+\noindent \textbf{}
+
+\noindent \textbf{1.3.2.1    General Rotation about any Axis}
+
+\noindent In order to get the rotation matrix for rotation about any axis with direction  cosines ux, uy, uz by an angle $\thetaup$ is given by
+
+\noindent \includegraphics*[width=6.29in, height=0.95in, keepaspectratio=false, trim=0.00in 0.13in 0.00in 0.00in]{image8}
+
+\noindent \textbf{}
+
+\noindent \textbf{1.3.2.2    A simple derivation for the case of 2D view is illustrated below:}
+
+\noindent First of all, it must been seen that rotating about any of the orthogonal axis is , in practice a rotation in the traditional 2D plane. This is because one of the parameter of the position triple has to be the same after rotation depending upon which axis you choose to rotate about. Thus the general two dimensional matrix can be easily extended to simple three dimensional case.
+
+\noindent The rotation about the origin in the x-y pplane corresponds to the following matrix that we wish to derive:
+
+\noindent \includegraphics*[width=1.59in, height=0.68in, keepaspectratio=false]{image9}   
+
+\noindent \textbf{}
+
+The derivation of the new coordinates of a generic point P can be inferred from the geometry that has been presented in the following figure:
+
+\noindent \includegraphics*[width=5.24in, height=2.62in, keepaspectratio=false]{image10}
+
+\noindent \textbf{}
+
+\noindent \textbf{}
+
+\noindent \textbf{}
+
+\noindent \textbf{}
+
+\noindent \textbf{}
+
+\noindent \textbf{}
+
+\noindent \includegraphics*[width=6.26in, height=1.64in, keepaspectratio=false]{image11}The coordinates (x' , y' ) can be obtained from (x, y) by the matrix multiplicatio
+
+\noindent The reader must notice that the rotation matrices may have a difference in sign of $\thetaup$. Because of the direction of rotation that we might decide.
+
+\noindent 
+
+\noindent \textbf{1.3.3    Scaling}
+
+\noindent Scaling is a linear transformation that enlarges or shrinks an object by scale factors that may or may not be equal in all directions. The scaling matrix is any diagonal matrix with positive reals as elements.
+
+\noindent A scaling about the origin is a transformation which maps a point P(x, y) to a point P' (x' , y' ) by multiplying the x and y coordinates by non-zero constant scaling factors sx and sy, respectively, to give x' = Sx${}_{ }$X and y' = Sy Y .
+
+\noindent \includegraphics*[width=4.32in, height=1.39in, keepaspectratio=false]{image12}
+
+\noindent 
+
+\noindent 
+
+\noindent 
+
+\noindent Scaling is not as such a very useful tool to change the view angle or just change the position of the object but enables us to change its size (as seen by us) with a given viewing screen or better say field of view.
+
+\noindent 
+
+\noindent \textbf{1.4    Tools for Projection/Reconstruction}
+
+\noindent The powerful theory described above will be used to prove more results that we will see in the upcoming chapters and will be used to build the mathematical model which we aim at. The Rotation, Scaling and Translation of the object will help us build projections as well as reconstruct from them the 3D objects that they sync with. Other basic structures of vector algebra will be used as when required without sometimes explicitly mentioning them. The building model for both the problems will be described in Chapter 2 and Chapter 3.
+
+\noindent --------------------------------------------xxxx----------------------------------------------
+
+\noindent 
+
+\noindent 
+
+\noindent 
+
+\noindent 
+
+\noindent \textbf{Chapter 2}
+
+\noindent \textbf{3D to 2D Conversion}
+
+\noindent \textbf{}
+
+\noindent \textbf{2.1    Introduction}
+
+\noindent \includegraphics*[width=2.18in, height=1.83in, keepaspectratio=false]{image13}In this Chapter, we shall describe a mathematical model to get the projection of a 3D Model onto any plane of projection that the software user wishes to choose. We will exploit the lemmas and the basics of theory that we studied in Chapter 1 and derive new results and then combine them all to lay our model of 3D -- 2D projection. The whole theory will mostly work around matrices that we have studied but may be in a slightly different way, but understandable. 
+
+\noindent 
+
+\noindent 
+
+\noindent 
+
+\noindent 
+
+\noindent s
+
+\noindent 
+
+ The idea basically consists of projecting the points that are a part of our object on the plane of interest/projection. Now, it is wise to think that there are an infinite number of points present in the object and it is unrealistic to fin the projection of every point. So, out model must involve some assumptions which have been listed in the next section.
+
+\noindent 
+
+\noindent \textbf{2.2    Assumptions}
+
+\noindent Our model of building the projections involves some assumptions that are listed below: 
+
+\begin{enumerate}
+\item  The given Object shall consist of \textit{only straight lines }with well-defined end points and \textit{no curved surfaces}. The same shall be assumed for the Object whose projections shall be given to us
 \end{enumerate}
 
 \noindent 
@@ -257,7 +499,121 @@ The above equation implies that any planar transformation can be performed by a 
 
 \noindent The second assumption needs to be taken into account because aligning the views and interpreting the corner points by image reading and then further naming them with some appropriate coordinates has been assumed to be out of the scope of this design project.
 
-\noindent \textbf{\underbar{}}
+\noindent 
+
+\noindent \textbf{2.3    Projection on the Plane}
+
+\noindent \textbf{2.3.1    Projection of a point on a plane}
+
+\noindent Consider a point P (x0, y0, z0) and a general plane in 3D space, represented by the equation ax + by + cz = d.  This is represented in the following figure:
+
+   
+
+\noindent 
+
+\noindent 
+
+\noindent 
+
+\noindent Now, let us derive the coordinates of the point P', the projection of the point P on the plane  represented by the above equation.
+
+\noindent Let the coordinates of the point P' be (x, y, z).
+
+\noindent Therefore, the direction cosines of the line joining the point P and the point P' must be the same as the direction cosines of the normal of the plane. Now, the direction ratios of any normal to the plane represented by the above equation is a, b, c respectively along the x, y, z direction.
+
+\noindent Therefore, we must have,
+
+   x-x0/a = y-y0/b = z-z0/c = k  were k is some constant
+
+\noindent Furthermore, the point P' lies on the plane and hence must satisfy the equation of the plane and therefore ax+by+cz =d. Substituting the value of x,y,z in terms of x0,y0,z0,k from the direction equality equation gives us the value of k as
+
+   K = - (ax0 + by0 + cz0 -d)/(a$\wedge$2 + b$\wedge$2 +c $\wedge$2)
+
+\noindent Hence we can calculate the coordinates of point P' by substituting the value of k in the direction equality equation.
+
+\noindent Note: We shall use the transformation math to view the object from the different angles i.e isometric views.
+
+\noindent \textbf{2.3.2    Key Aspects}
+
+\noindent We have already discussed quite a lot on how we should proceed with the projection onto a given plane and how points can be rotated and transformed in 3D space. Since edges and planes are attached to points that surround them, they also get rotated along with points. 
+
+\noindent Now, as discussed before we have an infinite number of points on the 3D object, so should we consider all of them? Well...of course not. So, before proceeding any further, we must study and understand the following theorem:
+
+\noindent 
+
+\noindent \textbf{Theorem 2.1: }\textit{The projection of the line on a plane is the line joining the projection of the points that lie on the original line}
+
+\noindent \textbf{Proof: }There are two points on a line whose projection is taken on a plane. Now, the projection of a line on a plane must be a line which can be uniquely identified by two points. Also, the projected line must pass through the two points of projection and hence the projection of the line on a plane is the line joining the projection of the points that lie on the original line.
+
+\noindent \textbf{Lemma 2.1: }\textit{The points that form an edge in the 3D model also form an edge in the projected view provided that both of them are visible in the projection.}
+
+\noindent To project a certain orthographic view, we will use the following technique:
+
+\begin{enumerate}
+\item  Firstly, rotate the object so that the plane of projection coincides with the XY plane. 
+
+\item  Start from the point having Z coordinate farthest from the viewer or the plane of projection depending on the view we choose to pursue. 
+
+\item  Set the Z coordinate to zero to project points onto the plane. Do this in the order that points farther from the viewer get projected first so that hidden areas can be actually made hidden in the projected view. 
+
+\item  Use lemma 2.1 to create the required edges as solid. 
+
+\item  Now, for the points that have not been projected, we shall join all of their edges with any other point with a hidden line if the hidden line does not overlap with the solid line.
+
+\item  Finish when all points have been projected. 
+\end{enumerate}
+
+\noindent 
+
+\noindent \textbf{Example}
+
+\noindent This can be illustrated for the following case of a triangular prism:
+
+\noindent 
+
+\noindent 
+
+\noindent 
+
+  
+
+\noindent \includegraphics*[width=2.08in, height=2.08in, keepaspectratio=false]{image14}
+
+\noindent 
+
+\noindent 
+
+\noindent 
+
+
+
+Viewing Direction
+
+
+
+\noindent The front four points can be seen from the viewing direction and hence we mark them. Then we draw solid edges between those points which also have a solid edge between them in the prism. We therefore get Figure (i). Then the two point at the back are joined by hidden lines to all the other points that they are connected to in such a way that the hidden line does not overlap with a solid line. We therefore get Figure (ii) which is required and correct orthographic projection.
+
+\noindent 
+
+\noindent 
+
+\noindent      ?
+
+\noindent 
+
+\noindent 
+
+ Figure (i) Figure (ii)
+
+\noindent 
+
+\noindent Keeping in mind all the assumptions, the analytical and the mathematical model described above quite well portray the method of obtaining the projection along any viewing direction or onto any plane of interest.
+
+\noindent We must see that curved surfaces would require an infinite number of applications of the projection formula to get a proper well defined curved edge to be obtained in the projection view.
+
+\noindent ---------------------------------------------------xxxx-------------------------------------------------------
+
+\noindent 
 
 
 \end{document}
