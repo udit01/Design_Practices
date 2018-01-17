@@ -9,7 +9,7 @@
 \usepackage[document]{ragged2e}
 
 \usepackage{fancyhdr}
-
+% \usepackage[]{classicthesis}
 
 \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
 \let\endchangemargin=\endlist 
@@ -135,6 +135,8 @@ As a matter of interest, we just wish to argue that these things can be computed
 
 \newpage
 
+% \setcounter{secnumdepth}{-1} % to unNumber introduction
+
 \chapter{Introduction}
 
 In the last ten years, a significant progress occurred in the area of 3D graphics. Many studies have been conducted in the field of 3D modeling, and a variety of methods that allow us to reconstruct 2D images into 3D were created. Today, 3D graphics industry creates models that can no longer be distinguished from a person in the real world or on photograph. This way of modeling is also the goal of this work; to explore options to create a photo-realistic 3D model shaped from the 2D images. This article has listed and briefly described methods of converting 2D images into 3D models.
@@ -168,6 +170,7 @@ We shall study the direction cosines and direction ratios of a line joining two 
 We shall further study the Vector Algebra and the 3D Transformations required to convert a given 3D Object to its projection view on any cross section and also do the same in a reverse manner i.e. converting the given projections back into the 3D Object by using matrices and their properties trying to exploit as many as possible and making them use to determine the number of different possible reconstructions possible (if any). We shall describe the assumptions while formulating the problem and prove to detail all the lemmas and theorems that are being used to define the model.
 \\
 
+% \setcounter{secnumdepth}{3}
 \chapter{Vector Algebra and 3D Transformation}
 
 \section{Homogeneous coordinate System}
@@ -334,26 +337,6 @@ A translation is a transformation which maps a point P (x, y) to a point $ P' (x
 \end{center}
 \\
 
-\[ R_{x}(\theta) = \begin{bmatrix}
-1 & 0 & 0 \\
-0 & cos(\theta) & -sin(\theta) \\
-0 & sin(\theta) & cos(\theta) 
-\end{bmatrix} \]
-
-
-\[ R_{y}(\theta) = \begin{bmatrix}
-cos(\theta) & 0 & sin(\theta) \\
-0 & 1 & 0 \\
--sin(\theta) & 0 & cos(\theta) 
-\end{bmatrix} \]
-
-
-\[ R_{z}(\theta) = \begin{bmatrix}
-cos(\theta) & -sin(\theta) & 0 \\
-sin(\theta) & cos(\theta) & 0 \\
-0 & 0 & 1 
-\end{bmatrix} \]
-
 In general, for the case of the 3D coordinate system the translation is defined by the following rules:
 
 \[ 		x’ = x + h	y’ = y + k	z’ = z + l  \]
@@ -371,11 +354,40 @@ It might be quite intriguing to the reader how the rotation of a point about a g
   Multiplication of a matrix, having a unit determinant and transpose same as its inverse, with any point vector in the coordinate space essentially amounts to its rotation around a fixed axis and by a fixed angle.
 \end{lemma}
 
+
+% \begin{multicols*}{2}
+
 \begin{enumerate}
   \item Anti-clockwise Rotation about x-axis by an angle $\theta$.
+  
   \item Anti-clockwise Rotation about y-axis by an angle $\theta$. 
+  
   \item Anti-clockwise Rotation about z-axis by an angle $\theta$. 
+
 \end{enumerate}
+
+% \columnbreak
+
+\[ R_{x}(\theta) = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & cos(\theta) & -sin(\theta) \\
+0 & sin(\theta) & cos(\theta) 
+\end{bmatrix} \]
+
+\[ R_{y}(\theta) = \begin{bmatrix}
+cos(\theta) & 0 & sin(\theta) \\
+0 & 1 & 0 \\
+-sin(\theta) & 0 & cos(\theta) 
+\end{bmatrix} \]
+
+\[ R_{z}(\theta) = \begin{bmatrix}
+cos(\theta) & -sin(\theta) & 0 \\
+sin(\theta) & cos(\theta) & 0 \\
+0 & 0 & 1 
+\end{bmatrix} \]
+
+% \end{multicols*}
+
 
 \subsection{General Rotation about any Axis}
 
@@ -411,8 +423,8 @@ s_{x} & 0 \\
 0 & s_{y}
 \end{pmatrix}  \]
 
-\begin{center}
-  is called the \textit{scaling transformation matrix.}
+is called the \textit{scaling transformation matrix.}
+\begin{center} 
   \includegraphics[height=5cm]{scalingCh1.eps}
   % An Image will come Here(cropped?)
   % \vspace{4cm}
@@ -562,7 +574,7 @@ To project a certain orthographic view, we will use the following technique:
 \end{enumerate}
 
 
-\textbf{Example}
+\large{\textbf{Example}}
 
 This can be illustrated for the following case of a triangular prism:\\
 % Image below\\
@@ -586,9 +598,86 @@ We must see that curved surfaces would require an infinite number of application
 
 % \vspace{0.2cm}
 
+\chapter{2D to 3D Conversion}
 
-% \nextpage
+\section{Introduction}
+
+In the previous chapter, we studied the method of producing a projection of a 3D model onto any plane. In this chapter, we shall, what we say, study the reverse of that process i.e. using two or more orthographic projections to determine the 3D model.
+\\
+The task of converting multiple 2D images into 3D model consists of a series of processing steps: Since Projection drops a dimension, converting from 2D to 3D is always a complex process.
+\\
+\begin{center}
+  \includegraphics{height=5cm}{ch3Intro.jpg}
+\end{center}
+
+Any orthographic projection provides us two views, but this is clearly neither necessary nor sufficient. The key for this process is the relations between multiple views which convey the information that corresponding sets of points must contain some structure and that this structure is related to the poses and the calibration of the camera.
+\\
+\section{Overview}
+
+First of all, it must be understood that any given set of orthographic projections might not represent a realizable 3D model. So, is there a maximum number for which, that number of given views might always realize a 3D model?  Well, let us look at the next example:
+
+\large{\textbf{Example}}
+
+\begin{center}
+  Image here \\
+  \vspace{5cm}
+  % \includegraphics{height=5cm}{ch3Intro.jpg}
+\end{center}
+
+The simple orthographic projections shown above do not seem to generate any kind of 3D object. Thus, orthographic views might not always generate a 3D model even if their corresponding dimensions match as shown in the above case.
+\\
+
+However, complex figure then these might also generate perfect models and hence one must make sure of all the cases and look for the things very carefully.
+\\
+\section{Number of Views}
+
+We must take care about the number of views that are available to us in order to produce a given 3D Model. Clearly, two orthographic projections aren’t sufficient to produce a 3D model. For eg – two of the orthographic views in case of a well-chosen cuboid and a triangular prism are same and therefore two views aren’t sufficient. 
+\\
+
+\subsection{Minimum views necessary for reconstruction}
+
+\subsection{Minimum views sufficient for reconstruction}
+To get the minimum number of views sufficient for reconstruction, we can just prove that it can be done in some n number of views and prove that it cannot be done in less than that. 
+\\
+Now, one view is for sure insufficient because we can just extrude in number of ways to get the same projection all the time.
+\\
+But consider the two vies given below, the 3D model generated by these views is unique and no other model can generate the same, atleast not with straight lines.
+\\
+
+[Something incomprehesible here!]
+
 %\bibliography{plain}
+
+\section{Algorithm}
+
+Now comes the part of where we will define the procedural structure to carry out the process of reconstructing the 3D object. We have assumed that all the three views are given to us in most of the cases as mentioned in the Assumptions section.
+\\
+\vspace{0.2cm}
+\textit{The algorithm we shall use is described as the following:}
+\\
+\begin{enumerate}
+  \item
+  First, we need to satisfy the constraint of point matching in different view including the dimensions.
+  \item
+  Then we shall project the points in the Front and Top View individually to cover their abscissa and ordinate whatever they might correspond to, without disturbing the constraints.
+  \item
+  If the side view is available apply above procedure to all other pairs of views. 
+  \item
+  Create the points space as a cross product of coordinate sets that are possible. Create all edges that are present on atleast one view.
+  \item
+  Since the projections are obtained by only using the points and their corresponding edges, we shall check if the orthographic projections match with the given one.
+  \item
+  Then we shall start removing edges making the orthographic projection closer to the predicted ones.
+  \item
+  We shall solidify the face enclosed by four edges.
+\end{enumerate}
+  
+\\
+Depending on the constraints the set of points, that will be generated will be in most of the cases the corner points of the actual 3D model that we wish to generate however in case our algorithm fails, steps 7 and 8 shall take care of it. 
+
+
+% \setcounter{secnumdepth}{-1}
+\chapter{Conclusion}
 
 \begin{thebibliography}{9}
 
