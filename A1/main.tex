@@ -289,7 +289,7 @@ A \textbf{transformation} is a function \f that maps a set \chi to itsel
 Translation is one of the most basic operations that can be performed on an object. It can be defined as the elementary transformation which can preserve relative positions of any two points in the coordinate space. 
 \vspace{0.3cm}
 \\
-A translation is a transformation which maps a point P (x, y) to a point P'(apostrophe) (x’ , y’) by adding a constant amount to each coordinate so that 
+A translation is a transformation which maps a point P (x, y) to a point $ P' (x’ , y’) $by adding a constant amount to each coordinate so that 
 \[ x' = x + h, y' = y + k \] for some constants h and k.
 
 \[ R_{x}(\theta) = \begin{bmatrix}
@@ -318,7 +318,7 @@ In general, for the case of the 3D coordinate system the translation is defined 
 
 \subsection{Rotation}
 
-A rotation about the origin through an angle \theta has the effect that a point P(x, y) is mapped to a point P’(apostrophe) (x’ , y’) so that the initial point P and its image point P’(apostrophe) are the same distance from the origin, and the angle between lines OP and OP’(apostrophe) is \theta.
+A rotation about the origin through an angle \theta has the effect that a point P(x, y) is mapped to a point $ P’ (x’ , y’) $ so that the initial point P and its image point $ P' $ are the same distance from the origin, and the angle between lines OP and $ OP’ $ is \theta.
 \vspace{0.3cm}
 
 \hspace{1cm} Since we have been considering the fact that matrices are important in the study of coordinate geometry involving projections, we must not proceed without getting the glimpse of this transformation in terms of matrices. The Rotation of the coordinate system about the conventional orthogonal axis of rotation and along any axis is specified below.
@@ -332,7 +332,7 @@ It might be quite intriguing to the reader how the rotation of a point about a g
 \begin{enumerate}
   \item Anti-clockwise Rotation about x-axis by an angle \theta.
   \item Anti-clockwise Rotation about y-axis by an angle \theta. 
-  \item 3. Anti-clockwise Rotation about z-axis by an angle \theta. 
+  \item Anti-clockwise Rotation about z-axis by an angle \theta. 
 \end{enumerate}
 
 \subsection{General Rotation about any Axis}
@@ -361,33 +361,181 @@ sin(\theta)  &  cos(\theta) \\
 
 The matrix
 \[ S(s_{x},s_{y}) = \begin{pmatrix}
-  
+s_{x} & 0 \\
+0 & s_{y}
 \end{pmatrix}  \]
+\begin{center}
+  is called the \textit{scaling transformation matrix.}
+
+  An Image will come Here(cropped?)
+  \vspace{4cm}
+\end{center}
+
+The coordinates$ (x’ , y’ ) $can be obtained from$ (x, y) $by the matrix multiplication
+
+\[ \textbf{P} = (x \hspace{0.3cm} y) \begin{pmatrix}
+cos(\theta) & sin(\theta) \\
+-sin(\theta) & cos(\theta)
+\end{pmatrix} = (x cos(\theta) - y sin(\theta) \hspace{0.3cm} x sin(\theta) + y cos(\theta) ) \]
+
+The matrix:
+
+\[ Rot(\theta) = \begin{pmatrix}
+cos(\theta) & sin(\theta) \\
+-sin(\theta) & cos(\theta)
+\end{pmatrix} \]
+
+is called the \textit{Rotation Matrix}.\\
 
 
-\chapter{Assumptions}
+\\
+The reader must notice that the rotation matrices may have a difference in sign of θ. Because of the direction of rotation that we might decide.\\
 
-\begin{enumerate}
+\subsection{Scaling}
+
+Scaling is a linear transformation that enlarges or shrinks an object by scale factors that may or may not be equal in all directions. The scaling matrix is any diagonal matrix with positive reals as elements.\\
+\vspace{0.3cm}
+
+A scaling about the origin is a transformation which maps a point$ P(x, y) $to a point$ P’ (x’ , y’ ) $by multiplying the x and y coordinates by non-zero constant scaling factors sx and sy, respectively, to give $ x’ = S_{x} X and y’ = S_{y} Y$ .
+\vspace{0.3cm}
+\\
+Scaling is not as such a very useful tool to change the view angle or just change the position of the object but enables us to change its size (as seen by us) with a given viewing screen or better say field of view.
+
+\section{Tools for Projection/Reconstruction}
+
+The powerful theory described above will be used to prove more results that we will see in the upcoming chapters and will be used to build the mathematical model which we aim at. The Rotation, Scaling and Translation of the object will help us build projections as well as reconstruct from them the 3D objects that they sync with. Other basic structures of vector algebra will be used as when required without sometimes explicitly mentioning them. The building model for both the problems will be described in Chapter 2 and Chapter 3.\\
+
+
+\chapter{3D to 2D Conversion}
+
+\section{Introduction}
+
+In this Chapter, we shall describe a mathematical model to get the projection of a 3D Model onto any plane of projection that the software user wishes to choose. We will exploit the lemmas and the basics of theory that we studied in Chapter 1 and derive new results and then combine them all to lay our model of 3D – 2D projection. The whole theory will mostly work around matrices that we have studied but may be in a slightly different way, but understandable. \\
+
+Image below \vspace{4cm}
+\\
+
+\hspace{1cm} The idea basically consists of projecting the points that are a part of our object on the plane of interest/projection. Now, it is wise to think that there are an infinite number of points present in the object and it is unrealistic to fin the projection of every point. So, out model must involve some assumptions which have been listed in the next section.\\
+
+
+
+
+
+\section{Assumptions}
+
+\begin{itemize}% because no order among them
     \item 
   The given Object shall consist of \textit{ only straight lines } with well defined end points and \textit{ no curved surfaces } . The same shall be assumed for the Object whose projections shall be given to us.
     \item 
   The Views that will be given to us must be \textit{ labelled with the coordinates } of their corner points and be aligned with the other necessary views in a perfect orientation for correct interpretation
-\end{enumerate}
+\end{itemize}
 
-\section*{Basis of Assumptions}
+
+\textbf{Basis of Assumptions}[10pt]
+
+{make the above heading larger}
 
 The first assumption has excluded the possibility of curved surfaces to be present in the object. Excluding these types of surfaces might not essentially rule out the possibility of infinite number of reconstructions from the projection views but surely it would rule out many of them. 
 \\
 \vspace{0.2cm}
-\textit{ Frankly speaking } , the mathematical construct used to convert the isometric view to the projection view might get complicated in some of the planes of projection as we will see in some of the examples illustrated further.
+\hspace{1cm} \textit{ Frankly speaking } , the mathematical construct used to convert the isometric view to the projection view might get complicated in some of the planes of projection as we will see in some of the examples illustrated further.
 \\
 \vspace{0.2cm}
 The second assumption needs to be taken into account because aligning the views and interpreting the corner points by image reading and then further naming them with some appropriate coordinates has been assumed to be out of the scope of this design project.
+\\
+
+\section{Projection on the Plane}
+
+\subsection{Projection of a point on a plane}
+
+Consider a point$ P (x_{0}, y_{0}, z_{0}) $ and a general plane in 3D space, represented by the equation $ax + by + cz = d$ .  This is represented in the following figure: \\
+{Image below}
+\vspace{4cm}
+
+Now, let us derive the coordinates of the point $P’$, the projection of the point P on the plane  represented by the above equation.
+\\
+\vspace{0.3cm}
+Let the coordinates of the point $ P’ $ be $(x, y, z)$.
+\\
+\vspace{0.3cm}
+
+Therefore, the direction cosines of the line joining the point$ P $and the point$ P’$ must be the same as the direction cosines of the normal of the plane. Now, the direction ratios of any normal to the plane represented by the above equation is $a, b, c $respectively along the $x, y, z $direction.
+\\
+\vspace{0.3cm}
+Therefore, we must have : 
+\[ \dfrac{x - x_{0}}{a} = \dfrac{y - y_{0}}{b} = \dfrac{z - z_{0}}{c} = \Bbbk \]
+
+Furthermore, the point $P’ $lies on the plane and hence must satisfy the equation of the plane and therefore $ax + by + cz  = d$. Substituting the value of$ x,y,z$ in terms of $ x_{0},y_{0},z_{0}, \Bbbk $from the direction equality equation gives us the value of \Bbbk as
+
+\[ \BbbK = \dfrac{- (a x_{0} + b y_{0} + c z_{0} - d)}{ a^2 + b^2 + c^2 } \]
+
+Hence we can calculate the coordinates of point $P’ $by substituting the value of \BbbK in the direction equality equation. \footnote{Note: We shall use the transformation math to view the object from the different angles i.e isometric views.}
+\\
+
+\subsection{Key Aspects}
+
+We have already discussed quite a lot on how we should proceed with the projection onto a given plane and how points can be rotated and transformed in 3D space. Since edges and planes are attached to points that surround them, they also get rotated along with points.
+\\
+\vspace{0.3cm}
+
+Now, as discussed before we have an infinite number of points on the 3D object, so should we consider all of them? Well \dots of course not. So, before proceeding any further, we must study and understand the following theorem:
+
+\begin{theorem}
+  The projection of the line on a plane is the line joining the projection of the points that lie on the original line
+\end{theorem}
+\begin{proof}
+  There are two points on a line whose projection is taken on a plane. Now, the projection of a line on a plane must be a line which can be uniquely identified by two points. Also, the projected line must pass through the two points of projection and hence the projection of the line on a plane is the line joining the projection of the points that lie on the original line.
+\end{proof}
+
+\begin{lemma}
+  \label{ingLemma}
+  The points that form an edge in the 3D model also form an edge in the projected view provided that both of them are visible in the projection.
+\end{lemma}
+\\
+\vspace{0.2cm}
+To project a certain orthographic view, we will use the following technique:
+\\
+\begin{enumerate}
+  \item 
+  Firstly, rotate the object so that the plane of projection coincides with the XY plane. 
+  \item 
+  Start from the point having Z coordinate farthest from the viewer or the plane of projection depending on the view we choose to pursue. 
+  \item 
+  Set the Z coordinate to zero to project points onto the plane. Do this in the order that points farther from the viewer get projected first so that hidden areas can be actually made hidden in the projected view. 
+  \item 
+  Use (why not find this ref?->) \ref{ingLemma} to create the required edges as solid. 
+  \item 
+  Now, for the points that have not been projected, we shall join all of their edges with any other point with a hidden line if the hidden line does not overlap with the solid line.
+  \item 
+  Finish when all points have been projected. 
+  
+\end{enumerate}
+
+
+\textbf{Example}[4pt]
+
+This can be illustrated for the following case of a triangular prism:\\
+Image below\\
+\vspace{6cm}
+
+The front four points can be seen from the viewing direction and hence we mark them. Then we draw solid edges between those points which also have a solid edge between them in the prism. We therefore get	Figure (i). Then the two point at the back are joined by hidden lines to all the other points that they are connected to in such a way that the hidden line does not overlap with a solid line. We therefore get Figure (ii) which is required and correct orthographic projection.
+\\
+Image below (with labels) \\
+\vspace{4cm}
+
+Keeping in mind all the assumptions, the analytical and the mathematical model described above quite well portray the method of obtaining the projection along any viewing direction or onto any plane of interest.
+\\
+\vspace{0.3cm}
+
+We must see that curved surfaces would require an infinite number of applications of the projection formula to get a proper well defined curved edge to be obtained in the projection view.
+\\
+\vspace{0.2cm}
+
 %\bibliography{plain}
 
 \nextpage
 
-\begin{thebibliography}{99}
+\begin{thebibliography}{9}
 
 
 \bibitem{ALM}
@@ -396,76 +544,6 @@ P. Allen, B. Landman and H. Meeks, New Bounds on van der Waerden type numbers fo
 
 \bibitem{BL}
 S. Burr and S. Loo, On Rado numbers II, unpublished.
-
-\bibitem{EB}
-E. Berlekamp, A construction for partitions which avoid long length arithmetic progressions, {\it Canadian Math Bulletin\/} {\bf 11} (1968), 409--414.
-
-
-\bibitem{BB}
-A. Beutelspacher and W. Brestovansky, `` Generalized Schur Numbers '', Lecture Notes in Mathematics, Springer-Verlag, Berlin, Vol. 969   pp.30--38, 1982. 
-
-\bibitem{FLR}
-N. Frantzikinakis, B. Landman and A. Robertson, On degree of regularity of generalized van der Waerden triples, {\it Advances in Applied Mathematics\/} {\bf 37} (2006), 124--128.
-
-\bibitem{FR}
-J. Fox and R. Rado\. {i}\v {c}\. {i}\' {c}, On the degree of regularity of generalized van der Waerden triples, preprint.
-
-\bibitem{DJG}
-D. J. Grynkiewicz, On some Rado numbers for generalized arithmetic progression, {\it Discrete Mathematics\/} {\bf 280} (2004), 39--50.
-
-\bibitem{GRS90}
-R. L. Graham, B. L. Rothschild and J. H. Spencer, Ramsey Theory, Second Edition, Wiley, 1990.
-
-\bibitem{GLR}
-R. L. Graham, L. Leeb and B. L. Rothschild, Ramsey Theorem for a class of categories, {\it Adv. Math.\/} {\bf 8} (1972), 417--433.
-
-\bibitem{GS}
-Song Guo and Zhi-Wei Sun, Determination of two colour Rado numbers for $\Sigma_1^m a_ix_i=x_{m+1}$, {\it Journal of Combinatorial Theory\/} {\bf 115} (2008), 345--353.
-
-\bibitem{TG}
-W. T. Gowers, A new proof of Szemer\`{e}di's theorem, {\it Geometric and Functional Analysis\/} {\bf 11} (2001), 465--588.
-
-\bibitem{GTT}
-S. Gupta, J. Thulasirangan and A. Tripathi, The two-colour Rado number for the equation $ax+by=(a+b)z$, {\it Annals of Combinatorics\/} (to appear)
-
-\bibitem{HJ}
-A. W. Hales and R. I. Jewett, Regularity and Positional Games, {\it Trans. Amer. Math. Soc.\/} {\bf 106} (1963), 222--229.
-
-\bibitem{HS}
-B. Hopkins and D. Schaal, On Rado numbers for $a_1x_1+\ldots+a_{m-1}x_{m-1}=x_m$, {\it Advances in Applied Mathematics\/} {\bf35} (2005), 433--441.
-
-\bibitem{KS}
-W. Kosek and D. Schaal, Rado number for the equation $\Sigma_1^{m-1} x_i + c=x_m$, for negative values of $c$, {\it Advances of Applied Mathematics\/} {\bf 27} (2001), 805--815.
-
-\bibitem{LR03}
-B. Landman and A. Robertson, Ramsey Theory on the Integers, Student Mathematical Library, Vol. 24, AMS, 2003. 
-
-\bibitem{LR02}
-B. Landman and A. Robertson, On generalized van der Waerden triples, {\it Discrete Mathematics\/} {\bf  256} (2002), 279--290.
-
-\bibitem{AR}
-A. Robertson, Difference Ramsey numbers and Issai numbers, {\it Advances Applied Math.\/} {\bf 25} (2000), 153--162.
-
-\bibitem{RT}
-F. P. Ramsey, On a Problem of Formal Logic, {\it Proc. London Math. Soc.\/} {\bf 30} (1930), 264--286.
-
-\bibitem{Rado1}
-R. Rado, Some recent results in combinatorial analysis, {\it Congr\`{e}s International des Mathematiciens\/}, Oslo, 1936.
-
-\bibitem{Rado2}
-R. Rado, Studien zur Kombinatorik, {\it Mathematische Zeitschrift\/} {\bf 36} (1933), 424--480.
-
-\bibitem{Rado3}
-R. Rado, Verallgemeinerung eines Satzes von van der Waerden mit Anwendungen auf ein Problem der Zahlentheorie, {\it Sonderausg. Sitzungsber. Preuss. Akad. Wiss. Phys.-Math. Klasse\/} {\bf 17} (1933), 1--10.
-
-\bibitem{DS}
-D. Schaal, On generalized Schur numbers, {\it Congressum Numerantium\/} {\bf 98} (1993), 178--187.
-
-\bibitem{IS}
-I. Schur, Uber die Kongruenz $x^m+y^m=z^m \bmod{m}$, {\it Jahresbehricht der Deutschen Mathematiker-Vereinigung\/} {\bf 25} (1916), 114--117.  
-
-\bibitem{VVW}
-B. L. van der Waerden, Beweis einer Baudetschen Vermutung, {\it Nieuw Arch. Wisk. \/} {\bf 15} (1927), 212--216.
 
 \end{thebibliography}
 
