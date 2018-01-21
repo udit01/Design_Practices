@@ -122,12 +122,7 @@ The package will have the following functionalities:
 In this design project, we shall work as developers and algorithm enthusiasts to understand the ways and finding different means to approach and tackle the objectives in a more well defined mathematical way. The solutions shall be presented not completely on how the human brain formulates or understands/interprets a given figure, be it 2D or 3D but in a way, that shall work out in all the cases we deal with in real life and definitely be understandable by the machine. Mathematical explanations that are more amenable to intuition are given.
 
 \vspace{0.2cm}
-
-Being an amateur in this field of design of software to compute projections and reconstruction of the model, it might eventually happen that the algorithm might fail in some cases or it may be proved that such an algorithm cannot exist or the model be correct but be based on certain assumptions on the construction of the object or the projections. Nevertheless, we shall work with full confidence and zeal to achieve the goal or reach to quite an end of the problem so that using our lemmas, proofs and knowledge, someday a perfect model can be implemented using a software by some other Computer Explorer. 
-\\
-\vspace{0.2cm}
-
-As a matter of interest, we just wish to argue that these things can be computed by our brain so we do hope to find a solution to this problem using machine learning algorithms. Since, Machine Learning algorithms are more or less based on Mathematical matrices, with the use of computer graphics, we expect to find a start with matrices that we have dealt with further in this report. 
+We shall work with full confidence and zeal to achieve the goal or reach to quite an end of the problem so that using our lemmas, proofs and knowledge, someday a perfect model can be implemented using a software by some other Computer Explorer. As a matter of interest, we just wish to argue that these things can be computed by our brain so we do hope to find a solution to this problem using machine learning algorithms. Since, Machine Learning algorithms are more or less based on Mathematical matrices, with the use of computer graphics, we expect to find a start with matrices that we have dealt with further in this report. 
 
 \newpage
 
@@ -203,7 +198,7 @@ This coordinate system has wide range of applications, including computer graphi
 \columnbreak
 
 \begin{center}
-  \includegraphics[height=5cm]{ch1intro.eps}
+  \includegraphics[height=5cm]{introIm2.png}
 \end{center}
 
 \end{multicols*}
@@ -222,7 +217,7 @@ This introduces an obvious redundancy, so that the same point in 3D has infinite
 
 \subsection{Homogeneous Matrix}
 
-\noindent The concatenation of a translation with a rotation, scaling or shear requires an awkward combination of a matrix addition and a matrix multiplication. The problem can be avoided by using an alternative coordinate system for which computations are performed by 3 × 3 matrix multiplications. Since 
+\noindent The concatenation of a translation with a rotation, scaling or shear requires an awkward combination of a matrix addition and a matrix multiplication. The problem can be avoided by using an alternative coordinate system for which computations are performed by 3 $ \times $ 3 matrix multiplications. Since 
 
 \begin{center}
 \[ (x' \hspace{.2cm}  y' \hspace{.2cm}  l ) \hspace{.2cm} = \hspace{.2cm} (x' \hspace{.2cm}  y' \hspace{.2cm} l )    \hspace{0.2cm} \begin{pmatrix}
@@ -241,21 +236,21 @@ The set of all homogeneous coordinates $(x , y , w)$ is called the \textit{proje
 
 \vspace{.5cm}
 
-\hspace{1cm} The above equation implies that any planar transformation can be performed by a $ 3 × 3 $ matrix multiplication and using homogeneous coordinates. Sometimes homogeneous coordinates will be denoted by capitals $ (X, Y, W) $  in order to distinguish them from the affine coordinates $(x, y)$.
+\hspace{1cm} The above equation implies that any planar transformation can be performed by a $ 3 \times 3 $ matrix multiplication and using homogeneous coordinates. Sometimes homogeneous coordinates will be denoted by capitals $ (X, Y, W) $  in order to distinguish them from the affine coordinates $(x, y)$.
 
 
 \subsection{Key Aspects}
 \begin{itemize}
   \item 
-  Any point in the projective plane is represented by a triple $ (X,Y,Z) $ , called the\textit{ homogeneous coordinates } or\textit{ projective coordinates }of the point, where$ X Y $ and$ Z $ are not all $ 0 $ .
+  Any point in the projective plane is represented by a triple $ (X,Y,Z) $  called the \textit{ homogeneous coordinates } or \textit{ projective coordinates } of the point, where $ X $ $Y $ and $ Z $  are not all $ 0 $ .
   \item 
   The point represented by a given set of homogeneous coordinates is unchanged if \textit{  the coordinates are multiplied by a common factor }.
   \item 
   Conversely, two sets of homogeneous coordinates represent the same point if and only if one is obtained from the other by multiplying all the coordinates by the same  \textit{ non-zero constant }.
   \item 
-  When$ Z $ is not $ 0$  the point represented is the point$ (X/Z,Y/Z)$ in the Euclidean plane.
+  When $ Z $ is not $ 0$  the point represented is the point$ (X/Z,Y/Z)$ in the Euclidean plane.
   \item 
-  When$ Z $ is $ 0$  the point represented is a point at $ infinity $ .
+  When $ Z $ is $ 0$  the point represented is a point at $ infinity $ .
 \end{itemize}
 
 \section{Vector Algebra}
@@ -269,8 +264,8 @@ Vectors in 3D space are usually given by their Cartesian coordinates, and operat
 
 \vspace{0.3cm}
 
-\indent \textbf{\textit{Addition : }} $ (x, y, z) + (x’ , y’ ,z’) = (x + x’, y + y’, z + z’) $  \\
-\indent \textbf{\textit{Subtraction : }} $(x, y, z) - (x’ , y’ ,z’) = (x - x’ ,y - y’, z - z’)$ \\
+\indent \textbf{\textit{Addition : }} $ (x, y, z) + (x_{0} , y_{0} ,z_{0}) = (x + x_{0}, y + y_{0}, z + z_{0}) $  \\
+\indent \textbf{\textit{Subtraction : }} $(x, y, z) - (x_{0} , y_{0} ,z_{0}) = (x - x_{0} ,y - y_{0}, z - z_{0})$ \\
 \indent \textbf{\textit{Scaling : }} $ \lambda (x, y, z) = (\lambda x, \lambda y, \lambda z)  $ \\
 \indent \textbf{\textit{Dot Product : }}$ (x, y, z) \cdot (x_{0} , y_{0} ,z_{0} ) = x x_{0} + y y_{0} + z z_{0} $ \\
 \indent \textbf{\textit{Norm : }} $ \| ( x , y , z ) \| = \sqrt{\vert \overrightarrow{v} \cdot \overrightarrow{v} \vert } = \sqrt{x^2 + y^2 + z^2} $ \\
@@ -299,13 +294,13 @@ $\overrightarrow{v}  $ and $ \overrightarrow{w}$ is given by  $\overrightarrow{v
 \\
 
 \begin{center}
-  \includegraphics[height=5cm]{vectorOpn.eps}
+  \includegraphics[height=5cm]{gibbsvectorsdotcross.png}
 \end{center}
 
 \subsection{Direction Cosines}
 
 
-If a directed line $\mathcal{L}$ passing through the origin makes angles $\alpha, \beta and \gamma$ with x, y and z-axes, respectively, called direction angles, then cosine of these angles, namely, $cos \alpha, cos \beta $and$ cos \gamma$ are called direction cosines of the directed line $\mathcal{L}$ . If we reverse the direction of L, then the direction angles are replaced by their supplements, i.e.,$ \pi - \alpha , \pi - \beta$ and $\pi - \gamma$ . Thus, the signs of the direction cosines are reversed. 
+If a directed line $\mathcal{L}$ passing through the origin makes angles $\alpha, \beta$ and $\gamma$ with x, y and z-axes, respectively, called direction angles, then cosine of these angles, namely, $ cos \alpha, cos \beta $ and $ cos \gamma$ are called direction cosines of the directed line $\mathcal{L}$ . If we reverse the direction of L, then the direction angles are replaced by their supplements, i.e.,$ \pi - \alpha , \pi - \beta$ and $\pi - \gamma$ . Thus, the signs of the direction cosines are reversed. 
 
 \vspace{0.3cm}
 Note that a given line in space can be extended in two opposite directions and so it has two sets of direction cosines. In order to have a unique set of direction cosines for a given line in space, we must take the given line as a directed line. These unique direction cosines are denoted by l, m and n. \\
@@ -323,7 +318,7 @@ Therefore \[ k^2 (a^2 + b^2 + c^2) = 1 \]
 \section{Transformations on 3D Objects}
 
 
-A\textbf{transformation}is a function f that maps a set $\chi$ to itself, i.e.   f:$\chi \rightarrow \chi$. Examples include rotations, reflections and translations. These can be carried out in Euclidean space, particularly in $\mathbb{R}^2 $and $\mathbb{R}^3$ . They are also operations that can be described explicitly using matrices.
+A \textbf{transformation} is a function f that maps a set $\chi$ to itself, i.e.   f: $\chi \rightarrow \chi$. Examples include rotations, reflections and translations. These can be carried out in Euclidean space, particularly in $\mathbb{R}^2 $and $\mathbb{R}^3$ . They are also operations that can be described explicitly using matrices.
 
 \subsection{Translation}
 Translation is one of the most basic operations that can be performed on an object. It can be defined as the elementary transformation which can preserve relative positions of any two points in the coordinate space. 
@@ -333,7 +328,7 @@ A translation is a transformation which maps a point P (x, y) to a point $ P' (x
 \[ x' = x + h, y' = y + k \] for some constants h and k.\\
 
 \begin{center}
-  \includegraphics[height=5cm]{translation.eps}
+  \includegraphics[height=5cm]{translation06.gif}
 \end{center}
 \\
 
@@ -460,9 +455,11 @@ A scaling about the origin is a transformation which maps a point$ P(x, y) $to a
 
 Scaling is not as such a very useful tool to change the view angle or just change the position of the object but enables us to change its size (as seen by us) with a given viewing screen or better say field of view.
 
-\section{Tools for Projection/Reconstruction}
 
-The powerful theory described above will be used to prove more results that we will see in the upcoming chapters and will be used to build the mathematical model which we aim at. The Rotation, Scaling and Translation of the object will help us build projections as well as reconstruct from them the 3D objects that they sync with. Other basic structures of vector algebra will be used as when required without sometimes explicitly mentioning them. The building model for both the problems will be described in Chapter 2 and Chapter 3.\\
+
+% \section{Tools for Projection/Reconstruction}
+
+% The powerful theory described above will be used to prove more results that we will see in the upcoming chapters and will be used to build the mathematical model which we aim at. The Rotation, Scaling and Translation of the object will help us build projections as well as reconstruct from them the 3D objects that they sync with. Other basic structures of vector algebra will be used as when required without sometimes explicitly mentioning them. The building model for both the problems will be described in Chapter 2 and Chapter 3.\\
 
 
 \chapter{3D to 2D Conversion}
@@ -475,7 +472,7 @@ In this Chapter, we shall describe a mathematical model to get the projection of
 
 
 \begin{center}
-  \includegraphics[height=5cm]{3dto2dintro.eps}
+  \includegraphics[height=5cm]{3to2intro.PNG}
 \end{center}
 
 \hspace{1cm} The idea basically consists of projecting the points that are a part of our object on the plane of interest/projection. Now, it is wise to think that there are an infinite number of points present in the object and it is unrealistic to fin the projection of every point. So, out model must involve some assumptions which have been listed in the next section.\\
@@ -492,7 +489,7 @@ In this Chapter, we shall describe a mathematical model to get the projection of
 \end{itemize}
 
 
-\textbf{Basis of Assumptions}[10pt]
+\textbf{Basis of Assumptions}
 
 {make the above heading larger}
 
@@ -582,12 +579,34 @@ This can be illustrated for the following case of a triangular prism:\\
 
 
 \begin{center}
-  \includegraphics[height=5cm]{3dto2dExample.eps}
+  \includegraphics[height=5cm]{prism.PNG}
 \end{center}
 
 The front four points can be seen from the viewing direction and hence we mark them. Then we draw solid edges between those points which also have a solid edge between them in the prism. We therefore get	Figure (i). Then the two point at the back are joined by hidden lines to all the other points that they are connected to in such a way that the hidden line does not overlap with a solid line. We therefore get Figure (ii) which is required and correct orthographic projection.
 \\
-Image below (with labels) \\
+
+
+\begin{multicols*}{2}
+  
+  \begin{center}
+    \includegraphics{view1prism.PNG}
+      \\
+    \textit{Figure} (i)
+    \\
+    
+  \end{center}
+  
+  \columnbreak
+
+  \begin{center}
+  
+  \includegraphics[height=5cm]{view2prism.PNG}
+  \\
+  \textit{Figure} (ii)  
+  \\
+  \end{center}
+
+\end{multicols*}
 \vspace{4cm}
 
 Keeping in mind all the assumptions, the analytical and the mathematical model described above quite well portray the method of obtaining the projection along any viewing direction or onto any plane of interest.
@@ -607,7 +626,7 @@ In the previous chapter, we studied the method of producing a projection of a 3D
 The task of converting multiple 2D images into 3D model consists of a series of processing steps: Since Projection drops a dimension, converting from 2D to 3D is always a complex process.
 \\
 \begin{center}
-  \includegraphics{height=5cm}{ch3Intro.jpg}
+  \includegraphics{height=5cm}{recon.PNG}
 \end{center}
 
 Any orthographic projection provides us two views, but this is clearly neither necessary nor sufficient. The key for this process is the relations between multiple views which convey the information that corresponding sets of points must contain some structure and that this structure is related to the poses and the calibration of the camera.
@@ -619,9 +638,7 @@ First of all, it must be understood that any given set of orthographic projectio
 \large{\textbf{Example}}
 
 \begin{center}
-  Image here \\
-  \vspace{5cm}
-  % \includegraphics{height=5cm}{ch3Intro.jpg}
+  \includegraphics{height=5cm}{Oviews.PNG}
 \end{center}
 
 The simple orthographic projections shown above do not seem to generate any kind of 3D object. Thus, orthographic views might not always generate a 3D model even if their corresponding dimensions match as shown in the above case.
